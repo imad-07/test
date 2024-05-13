@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ascii-artweb</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>text editor</h1>
+        <div class="input">
+            <input type="text" placeholder="your text here">
+        </div>
+
+<form>
+    <fieldset>
+      <legend>Choose a style:</legend>
+      <input type="radio" id="standard" name="style" value="standard.txt">
+      <label for="standard">Standard</label><br>
+      <input type="radio" id="shadow" name="style" value="shadow.txt">
+      <label for="shadow">Shadow</label><br>
+      <input type="radio" id="thinkertoy" name="style" value="thinkertoy.txt">
+      <label for="thinkertoy">Thinkertoy</label><br>
+    </fieldset>
+    <button type="submit">Submit</button>
+  </form>
+        <div class="output">
+            <div class="answer">
+                <span id="placeholder">Placeholder text from server will appear here</span><br>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
