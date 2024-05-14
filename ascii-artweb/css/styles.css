@@ -11,7 +11,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  background-image: url('/home/timadmar/ascii-artweb/imgs/galaxy-bg-image.6405a140a1b097.18087512.png');
+  background-image: url('../imgs/galaxy.png'); 
   font-family: Inter, sans-serif;
   color: #34124d;
 }
@@ -108,7 +108,7 @@ input[type="radio"]:checked {
   background-size: 10px;
   background-position: 50%;
   background-repeat: no-repeat;
-  background-image: url('/home/timadmar/ascii-artweb/imgs/checkmark.svg');
+  background-image: url('../imgs/checkmark.svg');
   background-color: rgb(13, 1, 106); /* Change background color */
   border-color: rgb(13, 1, 106); /* Change border color */
 }
