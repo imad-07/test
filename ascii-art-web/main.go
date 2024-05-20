@@ -7,34 +7,47 @@ import (
 	"os"
 )
 
-var templates = template.Must(template.ParseFiles("index.html", "result.html"))
-
+var tpl *template.Template
 func main() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/ascii-art", asciiArtHandler)
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("img"))))
 	fmt.Println("Server started at :8080")
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Printf("Server failed to start: %v\n", err)
+	}
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	if false {
-		http.Error(w, "Not found", http.StatusNotFound)
-	}
-	w.WriteHeader(http.StatusOK)
-	err := templates.ExecuteTemplate(w, "index.html", nil)
+	templates, err := tpl.ParseGlob("*.html")
 	if err != nil {
-		http.Error(w, "Not Found", http.StatusNotFound)
+		http.Error(w, "StatusInternalServerError ", http.StatusInternalServerError)
+		return
+	}
+	if r.URL.Path != "/" {
+		w.WriteHeader(http.StatusNotFound)
+		fmt.Fprint(w, "not Found Page", http.StatusNotFound)
+		return
+	}
+	err = templates.ExecuteTemplate(w, "index.html", nil)
+	if err != nil {
+		http.Error(w, "StatusInternalServerError ", http.StatusInternalServerError)
 		return
 	}
 }
 
 func asciiArtHandler(w http.ResponseWriter, r *http.Request) {
+	templates, err := tpl.ParseGlob("*.html")
+	if err != nil {
+		http.Error(w, "StatusInternalServerError ", http.StatusInternalServerError)
+	}
 	if r.Method != http.MethodPost {
 		// Bad Request
 		http.Error(w, "Bad Request", http.StatusBadRequest)
 		return
 	}
-
 	text := r.FormValue("text")
 	banner := r.FormValue("banner")
 	if text == "" || banner == "" {
@@ -47,9 +60,9 @@ func asciiArtHandler(w http.ResponseWriter, r *http.Request) {
 	}{
 		Result: result,
 	}
-	err := templates.ExecuteTemplate(w, "result.html", data)
+	err = templates.ExecuteTemplate(w, "result.html", data)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusNotFound)
+		http.Error(w, "StatusInternalServerError ", http.StatusInternalServerError)
 		return
 	}
 }
@@ -81,8 +94,6 @@ func generate(str string, banner string) string {
 	lettres := getLettres(fileContent)
 	return output(lettres, word)
 }
-//	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
-//	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("img"))))
 
 func output(lettres [][]string, word []string) string {
 	output := ""
