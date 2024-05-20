@@ -1,0 +1,164 @@
+.logo-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.logo {
+  width: 370px;
+  height: auto;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  background: #ffffff url('../img/wallpaper.jpg');
+}
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  background: linear-gradient(#212121, #000000) padding-box,
+              linear-gradient(145deg, transparent 40%,#0065f9, #ffffff) border-box;
+  border: 2px solid transparent;
+  animation: gradient 5s ease infinite, borderAnimation 5s ease infinite;
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #0065f9;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.login-box form {
+  text-align: center;
+}
+.radio-buttons {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.radio-button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.radio-button input[type="radio"] {
+  display: none;
+}
+
+.radio-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #aaa;
+  position: relative;
+  margin-right: 10px;
+}
+.radio-circle::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-100%) translateX(-50%) scale(3);
+  transition: 0.5s ease-in-out;
+}
+
+.radio-button input[type="radio"]:checked+.radio-circle::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-button:nth-of-type(1) input[type="radio"]:checked+.radio-circle::before,
+.radio-button:nth-of-type(2) input[type="radio"]:checked+.radio-circle::before,
+.radio-button:nth-of-type(3) input[type="radio"]:checked+.radio-circle::before {
+  background-color: #0065f9;
+}
+
+.radio-label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: 0.5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+  background: transparent;
+  border: none;
+}
+
+button:hover {
+  background: #0065f9;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #0065f9, 0 0 25px #277eff, 0 0 50px #9ac2ff, 0 0 100px #b6c9e4;
+}
+
+textarea {
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  color: #fff;
+  resize: none;
+  height: 45px;
+  border: 1px solid #414141;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 20px;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+pre{
+  margin-top: 1px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  height: 80px;
+  border: 1px solid #414141;
+  border-radius: 8px;
+  color: white;
+}
+::-webkit-scrollbar{
+  height: 5px;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: hsla(0, 0%, 89%, .8);
+  border-color: rgba(255,255,255, var(--tw-border-opacity));
+  border-radius: 9px;
+  border-width: 2px;
+}
+::-webkit-scrollbar-track{
+  background-color: transparent;
+  border-radius: 9px;
+}
