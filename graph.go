@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -14,6 +15,7 @@ type graph struct {
 type vertex struct {
 	key      string
 	adjacent []*vertex
+	visited  bool
 }
 
 // vertex
@@ -121,13 +123,44 @@ func Filetograph(filename []byte) (*graph, string, string, int) {
 	return graph, startvertex, endvertex, ants
 }
 
+func (g *graph) Stoe(s, e, path string, paths *[]string) {
+	start := g.Getv(s)
+	end := g.Getv(e)
+	start.visited = true
+	path += start.key + "->"
+	if start.key == end.key {
+		*paths = append(*paths, path[:len(path)-2])
+	} else {
+		for _, v := range start.adjacent {
+			if !v.visited {
+				g.Stoe(v.key, end.key, path, paths)
+			}
+		}
+	}
+	start.visited = false
+	path = path[:len(path)-1]
+}
+
+func (g *graph) Paths(s, e string) []string {
+	var paths []string
+	g.Stoe(s, e, "*", &paths)
+	return paths
+}
+
+func SortByLength(strings []string) {
+	sort.Slice(strings, func(i, j int) bool {
+		return len(strings[i]) < len(strings[j])
+	})
+}
+
 func main() {
 	file, err := os.ReadFile("test.txt")
 	if err != nil {
 		fmt.Println("An Err Has Occured While Reading The File")
 		return
 	}
-	x, s, e, a := Filetograph(file)
-	x.Print()
-	fmt.Println(s, e, a)
+	graph, start, end, _ := Filetograph(file)
+	x := graph.Paths(start, end)
+	SortByLength(x)
+	fmt.Println(x)
 }
