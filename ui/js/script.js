@@ -14,7 +14,7 @@ function createSidebar() {
   
     const userName = document.createElement('h3');
     userName.id = 'user-name';
-    userName.textContent = 'User Name';
+    userName.textContent = 'Username';
   
     profileSection.appendChild(profilePic);
     profileSection.appendChild(userName);
@@ -55,10 +55,10 @@ function createSidebar() {
   
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-      svg.setAttribute('height', '40');
+      svg.setAttribute('height', '30');
       svg.setAttribute('viewBox', '0 -960 960 960');
-      svg.setAttribute('width', '40');
-      svg.setAttribute('fill', '#707C97');
+      svg.setAttribute('width', '30');
+      svg.setAttribute('fill', '#707c97');
   
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', item.svgPath);
@@ -72,11 +72,11 @@ function createSidebar() {
   
       const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
       stop1.setAttribute('offset', '0%');
-      stop1.setAttribute('stop-color', '#7CB8F7');
+      stop1.setAttribute('stop-color', '#532b88');
   
       const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
       stop2.setAttribute('offset', '93%');
-      stop2.setAttribute('stop-color', '#2A8BF2');
+      stop2.setAttribute('stop-color', '#c8b1e4');
   
       linearGradient.appendChild(stop1);
       linearGradient.appendChild(stop2);
@@ -91,13 +91,14 @@ function createSidebar() {
     // Append profile section and menu to the sidebar
     sidebar.appendChild(profileSection);
     sidebar.appendChild(menu);
-  
+    let container = document.querySelector(".container")
     // Append the sidebar to the body
-    document.querySelector(".container").appendChild(sidebar);
+    container.insertBefore(sidebar, container.firstChild);
   }
   
   // Call the function to create and append the sidebar
-  //createSidebar();
+  createSidebar();
+
   let postsection = document.createElement("div")
   document.querySelectorAll('.like, .dislike, .comment').forEach((element) => {
     element.addEventListener('click', () => {
