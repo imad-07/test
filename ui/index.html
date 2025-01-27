@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Forum</title>
+</head>
+<script src="js/script.js" type="module"></script>
+<body>
+  <div class="card">
+    <!-- Front: Login Form -->
+    <div class="card-side front">
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="login-id">Nickname or E-mail</label>
+        <input type="text" id="login-id" name="login-id" required>
+
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" name="login-password" required>
+
+        <button type="submit" class="btn">Login</button>
+        <p class="switch">Don't have an account? <span id="switch-to-register">Register</span></p>
+      </form>
+    </div>
+
+    <!-- Back: Register Form -->
+    <div class="card-side back">
+      <h2>Register</h2>
+      <form class="register-form">
+        <label for="nickname">Nickname</label>
+        <input type="text" id="nickname" name="nickname" required>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" required>
+
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last-name" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="btn">Register</button>
+        <p class="switch">Already have an account? <span id="switch-to-login">Login</span></p>
+      </form>
+    </div>
+  </div>
+ <!-- <div class="container">
+  <div class="posts-section">
+  </div>
+</div>  -->
+</body>
+</html>
