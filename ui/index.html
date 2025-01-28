@@ -58,7 +58,7 @@
     </div>
   </div>   -->
   <!-- ************************************ -->
-  <div class="container">
+  <!-- <div class="container">
     <div class="posts-section">
       <div class="post">
         <div class="user-info">
@@ -102,7 +102,7 @@
                 <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
               </svg>
             </a>
-          </div> -->
+          </div> 
         </div>
   
         <div class="comments-section" style="display: none;">
@@ -139,7 +139,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>  -->
   
   <script>
     function toggleComments(button) {
@@ -148,7 +148,38 @@
         commentsSection.style.display === "none" ? "block" : "none";
     }
   </script>
+
+  <!-- ************************************ -->
+   <!-- User Section -->
+   <div class="user-section">
+    <div class="user-container">
+      <h2 class="user-header">Online Users</h2>
+      <ul id="userList" class="user-list"></ul>
+    </div>
+
+    <!-- Conversation Modal -->
+    <div id="conversationModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="conversationContent">
+          <h2 class="modal-header">Conversation</h2>
+          <div id="messages" class="message-box"></div>
+          <form id="messageForm" class="message-form">
+            <input
+              type="text"
+              id="messageInput"
+              class="message-input"
+              placeholder="Type your message"
+              required
+            />
+            <button type="submit" class="message-submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+   </div>
   
 </div>  
 </body>
+<script src="js/conv.js"></script>
 </html>
