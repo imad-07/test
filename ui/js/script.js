@@ -1,4 +1,4 @@
-function createSidebar() {
+function createSidebar(user) {
     // Create the main sidebar container
     const sidebar = document.createElement('div');
     sidebar.classList.add('sidebar');
@@ -9,12 +9,12 @@ function createSidebar() {
   
     const profilePic = document.createElement('img');
     profilePic.id = 'profile-pic';
-    profilePic.src = 'css/default-profile.jpg';
+    profilePic.src = '/ui/css/default-profile.jpg';
     profilePic.alt = 'Profile Picture';
   
     const userName = document.createElement('h3');
     userName.id = 'user-name';
-    userName.textContent = 'User Name';
+    userName.textContent = user.username;
   
     profileSection.appendChild(profilePic);
     profileSection.appendChild(userName);
@@ -94,32 +94,514 @@ function createSidebar() {
   
     // Append the sidebar to the body
     document.querySelector(".container").appendChild(sidebar);
+    let logoutbtn = document.querySelector(".LO")
+logoutbtn.addEventListener('click',function(){
+  logout()
+})
   }
   
   // Call the function to create and append the sidebar
   //createSidebar();
-  let postsection = document.createElement("div")
   document.querySelectorAll('.like, .dislike, .comment').forEach((element) => {
     element.addEventListener('click', () => {
       element.classList.toggle('active');
     });
   });
   function Removesidebar(){
-    document.addEventListener("keydown",e=>{
-        if (e.key == "K"){
             let sidebar = document.querySelector(".sidebar")
             sidebar.remove()
-        }
-      })
   }
-  const card = document.querySelector('.card');
-const switchToRegister = document.getElementById('switch-to-register');
-const switchToLogin = document.getElementById('switch-to-login');
-
+  
+  const card = createCard()
+  const switchToRegister = document.getElementById('switch-to-register');
+  const switchToLogin = document.getElementById('switch-to-login');
 switchToRegister.addEventListener('click', () => {
   card.classList.add('flipped');
 });
-
 switchToLogin.addEventListener('click', () => {
   card.classList.remove('flipped');
 });
+function Removecard(){
+  let card = document.querySelector(".Form")
+  card.remove()
+}
+function createCard() {
+  // Create the main card container
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  // Create the front side (Login Form)
+  const frontSide = document.createElement('div');
+  frontSide.classList.add('card-side', 'front');
+
+  const loginHeading = document.createElement('h2');
+  loginHeading.textContent = 'Login';
+
+  const loginForm = document.createElement('form');
+  loginForm.id = 'login-form';
+
+  const loginIdLabel = document.createElement('label');
+  loginIdLabel.setAttribute('for', 'login-id');
+  loginIdLabel.textContent = 'Nickname or E-mail';
+
+  const loginIdInput = document.createElement('input');
+  loginIdInput.type = 'text';
+  loginIdInput.id = 'login-id';
+  loginIdInput.name = 'login-id';
+  loginIdInput.required = true;
+
+  const loginPasswordLabel = document.createElement('label');
+  loginPasswordLabel.setAttribute('for', 'login-password');
+  loginPasswordLabel.textContent = 'Password';
+
+  const loginPasswordInput = document.createElement('input');
+  loginPasswordInput.type = 'password';
+  loginPasswordInput.id = 'login-password';
+  loginPasswordInput.name = 'login-password';
+  loginPasswordInput.required = true;
+
+  const loginButton = document.createElement('button');
+  loginButton.type = 'submit';
+  loginButton.classList.add('btn');
+  loginButton.textContent = 'Login';
+
+  const switchToRegister = document.createElement('p');
+  switchToRegister.classList.add('switch');
+  switchToRegister.innerHTML = 'Don\'t have an account? <span id="switch-to-register">Register</span>';
+
+  loginForm.appendChild(loginIdLabel);
+  loginForm.appendChild(loginIdInput);
+  loginForm.appendChild(loginPasswordLabel);
+  loginForm.appendChild(loginPasswordInput);
+  loginForm.appendChild(loginButton);
+  loginForm.appendChild(switchToRegister);
+
+  frontSide.appendChild(loginHeading);
+  frontSide.appendChild(loginForm);
+
+  // Create the back side (Register Form)
+  const backSide = document.createElement('div');
+  backSide.classList.add('card-side', 'back');
+
+  const registerHeading = document.createElement('h2');
+  registerHeading.textContent = 'Register';
+
+  const registerForm = document.createElement('form');
+  registerForm.classList.add('register-form');
+
+  const nicknameLabel = document.createElement('label');
+  nicknameLabel.setAttribute('for', 'nickname');
+  nicknameLabel.textContent = 'Nickname';
+
+  const nicknameInput = document.createElement('input');
+  nicknameInput.type = 'text';
+  nicknameInput.id = 'nickname';
+  nicknameInput.name = 'nickname';
+  nicknameInput.required = true;
+
+  const ageLabel = document.createElement('label');
+  ageLabel.setAttribute('for', 'age');
+  ageLabel.textContent = 'Age';
+
+  const ageInput = document.createElement('input');
+  ageInput.type = 'number';
+  ageInput.id = 'age';
+  ageInput.name = 'age';
+  ageInput.required = true;
+
+  const genderLabel = document.createElement('label');
+  genderLabel.setAttribute('for', 'gender');
+  genderLabel.textContent = 'Gender';
+
+  const genderSelect = document.createElement('select');
+  genderSelect.id = 'gender';
+  genderSelect.name = 'gender';
+  genderSelect.required = true;
+
+  const maleOption = document.createElement('option');
+  maleOption.value = 'male';
+  maleOption.textContent = 'Male';
+
+  const femaleOption = document.createElement('option');
+  femaleOption.value = 'female';
+  femaleOption.textContent = 'Female';
+
+  genderSelect.appendChild(maleOption);
+  genderSelect.appendChild(femaleOption);
+
+  const firstNameLabel = document.createElement('label');
+  firstNameLabel.setAttribute('for', 'first-name');
+  firstNameLabel.textContent = 'First Name';
+
+  const firstNameInput = document.createElement('input');
+  firstNameInput.type = 'text';
+  firstNameInput.id = 'first-name';
+  firstNameInput.name = 'first-name';
+  firstNameInput.required = true;
+
+  const lastNameLabel = document.createElement('label');
+  lastNameLabel.setAttribute('for', 'last-name');
+  lastNameLabel.textContent = 'Last Name';
+
+  const lastNameInput = document.createElement('input');
+  lastNameInput.type = 'text';
+  lastNameInput.id = 'last-name';
+  lastNameInput.name = 'last-name';
+  lastNameInput.required = true;
+
+  const emailLabel = document.createElement('label');
+  emailLabel.setAttribute('for', 'email');
+  emailLabel.textContent = 'E-mail';
+
+  const emailInput = document.createElement('input');
+  emailInput.type = 'email';
+  emailInput.id = 'email';
+  emailInput.name = 'email';
+  emailInput.required = true;
+
+  const passwordLabel = document.createElement('label');
+  passwordLabel.setAttribute('for', 'password');
+  passwordLabel.textContent = 'Password';
+
+  const passwordInput = document.createElement('input');
+  passwordInput.type = 'password';
+  passwordInput.id = 'password';
+  passwordInput.name = 'password';
+  passwordInput.required = true;
+
+  const registerButton = document.createElement('button');
+  registerButton.type = 'submit';
+  registerButton.classList.add('btn');
+  registerButton.textContent = 'Register';
+
+  const switchToLogin = document.createElement('p');
+  switchToLogin.classList.add('switch');
+  switchToLogin.innerHTML = 'Already have an account? <span id="switch-to-login">Login</span>';
+
+  registerForm.appendChild(nicknameLabel);
+  registerForm.appendChild(nicknameInput);
+  registerForm.appendChild(ageLabel);
+  registerForm.appendChild(ageInput);
+  registerForm.appendChild(genderLabel);
+  registerForm.appendChild(genderSelect);
+  registerForm.appendChild(firstNameLabel);
+  registerForm.appendChild(firstNameInput);
+  registerForm.appendChild(lastNameLabel);
+  registerForm.appendChild(lastNameInput);
+  registerForm.appendChild(emailLabel);
+  registerForm.appendChild(emailInput);
+  registerForm.appendChild(passwordLabel);
+  registerForm.appendChild(passwordInput);
+  registerForm.appendChild(registerButton);
+  registerForm.appendChild(switchToLogin);
+
+  backSide.appendChild(registerHeading);
+  backSide.appendChild(registerForm);
+
+  // Append front and back sides to the card
+  card.appendChild(frontSide);
+  card.appendChild(backSide);
+  let container = document.querySelector(".container")
+  // Append the card to the page
+  let form = document.createElement("div")
+  form.classList.add("Form")
+  form.appendChild(card)
+  container.appendChild(form);
+  return card;
+}
+function createPost(Post) {
+  // Create the main post container
+  const post = document.createElement('div');
+  post.classList.add('post');
+
+  // Create the user info section
+  const userInfo = document.createElement('div');
+  userInfo.classList.add('user-info');
+
+  const avatar = document.createElement('img');
+  avatar.src = '/ui/css/default-profile.jpg';
+  avatar.alt = 'User Avatar';
+  avatar.classList.add('avatar');
+
+  const userDetails = document.createElement('div');
+  userDetails.classList.add('user-details');
+
+  const username = document.createElement('h4');
+  username.classList.add('username');
+  username.textContent = Post.author;
+  console.log(Post)
+
+  const timestamp = document.createElement('p');
+  timestamp.classList.add('timestamp');
+  timestamp.textContent = Post.date;
+
+  userDetails.appendChild(username);
+  userDetails.appendChild(timestamp);
+  userInfo.appendChild(avatar);
+  userInfo.appendChild(userDetails);
+
+  // Create the post content
+  const postContent = document.createElement('p');
+  postContent.classList.add('post-content');
+  postContent.textContent = Post.content;
+
+  // Create the post actions section
+  const postActions = document.createElement('div');
+  postActions.classList.add('post-actions');
+
+  // Like button and notification
+  const like = document.createElement('div');
+  like.classList.add('like');
+
+  const likeButton = document.createElement('button');
+  const likeSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  likeSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  likeSvg.setAttribute('height', '20px');
+  likeSvg.setAttribute('viewBox', '0 -960 960 960');
+  likeSvg.setAttribute('width', '20px');
+  likeSvg.setAttribute('fill', '#707C97');
+  const likePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  likePath.setAttribute('d', 'M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Zm-72-30v72H120v336h144v72H48v-480h216Z');
+  likeSvg.appendChild(likePath);
+  likeButton.appendChild(likeSvg);
+
+  const likeNotification = document.createElement('span');
+  likeNotification.classList.add('notification-icon');
+  likeNotification.textContent = Post.likes;
+
+  like.appendChild(likeButton);
+  like.appendChild(likeNotification);
+
+  // Dislike button and notification
+  const dislike = document.createElement('div');
+  dislike.classList.add('dislike');
+
+  const dislikeButton = document.createElement('button');
+  const dislikeSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  dislikeSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  dislikeSvg.setAttribute('height', '20px');
+  dislikeSvg.setAttribute('viewBox', '0 -960 960 960');
+  dislikeSvg.setAttribute('width', '20px');
+  dislikeSvg.setAttribute('fill', '#707C97');
+  const dislikePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  dislikePath.setAttribute('d', 'M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Zm72 30v-72h144v-336H696v-72h216v480H696Z');
+  dislikeSvg.appendChild(dislikePath);
+  dislikeButton.appendChild(dislikeSvg);
+
+  const dislikeNotification = document.createElement('span');
+  dislikeNotification.classList.add('notification-icon');
+  dislikeNotification.textContent = Post.dislikes;
+
+  dislike.appendChild(dislikeButton);
+  dislike.appendChild(dislikeNotification);
+
+  // Comment button and notification
+  const comment = document.createElement('div');
+  comment.classList.add('comment');
+
+  const commentButton = document.createElement('button');
+  const commentSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  commentSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  commentSvg.setAttribute('height', '20px');
+  commentSvg.setAttribute('viewBox', '0 -960 960 960');
+  commentSvg.setAttribute('width', '20px');
+  commentSvg.setAttribute('fill', '#707C97');
+  const commentPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  commentPath.setAttribute('d', 'M864-96 720-240H360q-29.7 0-50.85-21.15Q288-282.3 288-312v-48h384q29.7 0 50.85-21.15Q744-402.3 744-432v-240h48q29.7 0 50.85 21.15Q864-629.7 864-600v504ZM168-462l42-42h390v-288H168v330ZM96-288v-504q0-29.7 21.15-50.85Q138.3-864 168-864h432q29.7 0 50.85 21.15Q672-821.7 672-792v288q0 29.7-21.15 50.85Q629.7-432 600-432H240L96-288Zm72-216v-288 288Z');
+  commentSvg.appendChild(commentPath);
+  commentButton.appendChild(commentSvg);
+
+  const commentNotification = document.createElement('span');
+  commentNotification.classList.add('notification-icon');
+  commentNotification.textContent = Post.commentsCount;
+
+  comment.appendChild(commentButton);
+  comment.appendChild(commentNotification);
+
+  // Show more button
+  const showMoreContainer = document.createElement('div');
+  showMoreContainer.classList.add('showmore-container');
+
+  const showMoreLink = document.createElement('a');
+  showMoreLink.href = '#';
+  showMoreLink.classList.add('showmore');
+  showMoreLink.textContent = 'more';
+
+  const showMoreSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  showMoreSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  showMoreSvg.setAttribute('height', '10px');
+  showMoreSvg.setAttribute('viewBox', '0 -960 960 960');
+  showMoreSvg.setAttribute('width', '10px');
+  showMoreSvg.setAttribute('fill', '#707C97');
+  const showMorePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  showMorePath.setAttribute('d', 'M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z');
+  showMoreSvg.appendChild(showMorePath);
+  showMoreLink.appendChild(showMoreSvg);
+
+  const showMoreButton = document.createElement('button');
+  showMoreButton.classList.add('btn');
+  showMoreLink.appendChild(showMoreButton);
+
+  showMoreContainer.appendChild(showMoreLink);
+
+  // Append all post actions to the post-actions container
+  postActions.appendChild(like);
+  postActions.appendChild(dislike);
+  postActions.appendChild(comment);
+  postActions.appendChild(showMoreContainer);
+
+  // Append all sections to the post
+  post.appendChild(userInfo);
+  post.appendChild(postContent);
+  post.appendChild(postActions);
+  let postsection = document.querySelector(".posts-section")
+  if (postsection == null){
+    postsection = document.createElement("div")
+    postsection.classList.add("posts-section")
+  }
+  let container = document.querySelector(".container")
+  // Append the post to the body
+  postsection.appendChild(post);
+  container.appendChild(postsection)
+}
+//createPost()
+let isSubmitting = false;
+const registerform = document.querySelector(".register-form")
+ registerform.addEventListener("submit",async(e)=>{
+  e.preventDefault()
+  if(isSubmitting){
+    return
+  }
+  isSubmitting = true
+  const username  = e.currentTarget.querySelector("#nickname").value
+  const age       = e.currentTarget.querySelector("#age").value
+  const gender    = e.currentTarget.querySelector("#gender").value
+  const firstname = e.currentTarget.querySelector("#first-name").value
+  const lastname  = e.currentTarget.querySelector("#last-name").value
+  const email     = e.currentTarget.querySelector("#email").value
+  const password  = e.currentTarget.querySelector("#password").value
+  console.log({username, age, gender, firstname, lastname, email, password})
+  if(!validinfos({username, age, gender, firstname, lastname, email, password},"register")){
+    sendRegisterinfo({username, age: +age, gender, firstname, lastname, email, password});
+  }else{
+    isSubmitting = false;
+  }
+ })
+ function validinfos(user,action){
+  function validbs(fields){
+    for (const field of fields) {
+      if (!user[field]) {
+        errorSpan.textContent = errorMessages.required;
+        return false;
+      }
+    }
+    return true;
+   }
+  if (action == "login"){
+
+    if (!validateEmail(email)) return false;
+    if (!validatePassword(password)) return false;
+  }else if (action == "register"){
+    const {username, age, gender, firstname, lastname, email, password} = user
+    if (!validbs(["username", "age", "gender", "firstname", "lastname", "email", "password"])) return false;
+    if (!validateEmail(email)) return false;
+    if (!validatePassword(password)) return false;
+    if (!validlen(username,3,15) || !validlen(firstname,3,15) || !validlen(lastname,3,15) || (age > 100 || age < 12) || (gender != "Male" && gender != "Female")) return false;
+  }
+  return true
+ }
+ function validlen(str,x,y){
+  if (str.length < x || str.length > y){
+    return false
+  }
+  return true
+ }
+ function validateEmail(email){
+  if (email.length < 5 || email.length > 50) {
+    return false;
+  }
+  return true;
+ }
+ function validatePassword(email){
+  if (email.length < 5 || email.length > 30) {
+    return false;
+  }
+  return true;
+ }
+ async function sendRegisterinfo(user){
+  try {
+    const data = await fetch("/api/signup",{
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+    if (data.ok){
+      card.classList.remove('flipped')
+    }else{
+      console.log(data)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+ }
+ const loginrform = document.querySelector("#login-form")
+ loginrform.addEventListener("submit",async(e)=>{``
+  e.preventDefault()
+  if(isSubmitting){
+    return
+  }
+  isSubmitting = true
+  const email  = e.currentTarget.querySelector("#login-id").value
+  const password  = e.currentTarget.querySelector("#login-password").value
+  if(validinfos({email, password},"login")){
+    sendlogininfo({email, password});
+  }else{
+    isSubmitting = false;
+  }
+ })
+async function sendlogininfo(user){
+  try {
+    const data = await fetch("/api/login", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    if (data.ok) {
+      servehome(user)
+    } else {
+      console.log( await data.text());
+    }
+  } catch (error) {
+    errorSpan.textContent = "An error occurred. Please try again.";
+  } finally {
+    isSubmitting = false;
+  }
+};
+async function servehome(user){
+  Removecard()
+  createSidebar(user)
+ loadPosts().then(posts => {
+  for (let post in posts){
+    createPost(posts[post])
+   }
+ })
+}
+function logout(){
+  document.querySelector(".container").innerHTML = "";
+  createCard()
+}
+async function fetchPosts (num){
+  const res = await fetch(`/api/post/?page-number=${num}`);
+  const data = await res.json();
+  return data;
+};
+async function loadPosts() {
+  let response = await fetchPosts(0);
+  let posts = response.Posts;
+  //console.log(posts)
+  return posts;
+}

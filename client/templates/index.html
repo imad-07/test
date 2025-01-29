@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/client/assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Home | Forum</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="/client/assets/css/main.css" />
+    <link rel="stylesheet" href="/client/assets/css/index.css" />
+    <!-- fontawesom -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <noscript>
+      <style>
+        header,
+        section,
+        main {
+          display: none;
+        }
+      </style>
+      <p class="js-error">Please run the js</p>
+    </noscript>
+    <header>
+      <div class="container">
+        <div class="content">
+          <div class="logo-search">
+            <div class="logo">
+              <a class="short_logo" href="/"
+                ><img src="/client/assets/img/orca.png" alt="logo"
+              /></a>
+              <a class="full_logo" href="/"
+                ><img src="/client/assets/img/logo.png" alt="logo"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+    <!-- Start Main -->
+    <main>
+      <div class="container">
+        <!-- toast -->
+        <div class="toast">
+          <div class="toast-content">
+            <i class="fas fa-solid fa-xmark check"></i>
+            <div class="message">
+              <span class="text text-1">warning</span>
+              <span class="text text-2">You must login first</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-xmark close"></i>
+          <div class="progress"></div>
+        </div>
+
+        <aside class="left_aside other_devices">
+          <section>
+            <h3>Filter By:</h3>
+            <div class="filter">
+              <div class="each_filter">
+                <i class="fa-solid fa-table-list"></i>
+                <div class="filter_content">
+                  <h3>Categories:</h3>
+                  <select name="by_category" id="by_category">
+                    <option value="all_cat">All</option>
+                    <option value="general">General</option>
+                    <option value="food">Food</option>
+                    <option value="tech">Tech</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="filter_btns">
+                <button class="submit">Filter</button>
+                <button class="reset">Reset</button>
+              </div>
+            </div>
+          </section>
+        </aside>
+        <!-- main -->
+        <section class="main main-page">
+          <!-- Create Post -->
+          <aside class="left_aside filter_mobile">
+            <section>
+              <h3>Filter By:</h3>
+              <div class="filter">
+                <div class="each_filter">
+                  <i class="fa-solid fa-table-list"></i>
+                  <div class="filter_content">
+                    <h3>Categories:</h3>
+                    <select name="by_category" id="by_category">
+                      <option value="Posted">All</option>
+                      <option value="Posted">General</option>
+                      <option value="Posted">Food</option>
+                      <option value="Posted">Tech</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="filter_btns">
+                  <button class="submit">Filter</button>
+                  <button class="reset">Reset</button>
+                </div>
+              </div>
+            </section>
+          </aside>
+          <section class="posts-holder"></section>
+        </section>
+        <!-- end main -->
+      </div>
+    </main>
+    <script src="/client/assets/script/main.js" type="module"></script>
+  </body>
+</html>
