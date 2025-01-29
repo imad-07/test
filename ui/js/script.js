@@ -1,3 +1,8 @@
+var info = {}
+await getInfoData().then(i =>{
+  info = i 
+})
+let isSubmitting = false;
 function createSidebar(user) {
     // Create the main sidebar container
     const sidebar = document.createElement('div');
@@ -111,19 +116,14 @@ logoutbtn.addEventListener('click',function(){
             let sidebar = document.querySelector(".sidebar")
             sidebar.remove()
   }
-  
-  const card = createCard()
-  const switchToRegister = document.getElementById('switch-to-register');
-  const switchToLogin = document.getElementById('switch-to-login');
-switchToRegister.addEventListener('click', () => {
-  card.classList.add('flipped');
-});
-switchToLogin.addEventListener('click', () => {
-  card.classList.remove('flipped');
-});
+  /*
+*/
+
 function Removecard(){
-  let card = document.querySelector(".Form")
-  card.remove()
+  let card = document.querySelector(".Form") || null
+  if (card != null){
+    card.remove()
+  }
 }
 function createCard() {
   // Create the main card container
@@ -329,7 +329,6 @@ function createPost(Post) {
   const username = document.createElement('h4');
   username.classList.add('username');
   username.textContent = Post.author;
-  console.log(Post)
 
   const timestamp = document.createElement('p');
   timestamp.classList.add('timestamp');
@@ -464,29 +463,6 @@ function createPost(Post) {
   postsection.appendChild(post);
   container.appendChild(postsection)
 }
-//createPost()
-let isSubmitting = false;
-const registerform = document.querySelector(".register-form")
- registerform.addEventListener("submit",async(e)=>{
-  e.preventDefault()
-  if(isSubmitting){
-    return
-  }
-  isSubmitting = true
-  const username  = e.currentTarget.querySelector("#nickname").value
-  const age       = e.currentTarget.querySelector("#age").value
-  const gender    = e.currentTarget.querySelector("#gender").value
-  const firstname = e.currentTarget.querySelector("#first-name").value
-  const lastname  = e.currentTarget.querySelector("#last-name").value
-  const email     = e.currentTarget.querySelector("#email").value
-  const password  = e.currentTarget.querySelector("#password").value
-  console.log({username, age, gender, firstname, lastname, email, password})
-  if(!validinfos({username, age, gender, firstname, lastname, email, password},"register")){
-    sendRegisterinfo({username, age: +age, gender, firstname, lastname, email, password});
-  }else{
-    isSubmitting = false;
-  }
- })
  function validinfos(user,action){
   function validbs(fields){
     for (const field of fields) {
@@ -546,21 +522,6 @@ const registerform = document.querySelector(".register-form")
     console.log(error)
   }
  }
- const loginrform = document.querySelector("#login-form")
- loginrform.addEventListener("submit",async(e)=>{``
-  e.preventDefault()
-  if(isSubmitting){
-    return
-  }
-  isSubmitting = true
-  const email  = e.currentTarget.querySelector("#login-id").value
-  const password  = e.currentTarget.querySelector("#login-password").value
-  if(validinfos({email, password},"login")){
-    sendlogininfo({email, password});
-  }else{
-    isSubmitting = false;
-  }
- })
 async function sendlogininfo(user){
   try {
     const data = await fetch("/api/login", {
@@ -580,7 +541,7 @@ async function sendlogininfo(user){
   } finally {
     isSubmitting = false;
   }
-};
+}
 async function servehome(user){
   Removecard()
   createSidebar(user)
@@ -590,18 +551,74 @@ async function servehome(user){
    }
  })
 }
-function logout(){
-  document.querySelector(".container").innerHTML = "";
-  createCard()
+async function logout(){
+      document.querySelector(".container").innerHTML = "";
+      createCard()
+      document.cookie ="session_token=;Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+      
 }
-async function fetchPosts (num){
+async function fetchPosts(num){
   const res = await fetch(`/api/post/?page-number=${num}`);
   const data = await res.json();
   return data;
-};
+}
 async function loadPosts() {
   let response = await fetchPosts(0);
   let posts = response.Posts;
-  //console.log(posts)
   return posts;
 }
+async function getInfoData(){
+  const res = await fetch("/api/info");
+  const data = await res.json()
+  if (res.ok) {
+    return data;
+  }
+}
+(async function(){
+  console.log(info)
+ 
+  if (!info.authorize){
+    createCard()
+    document.querySelector('.container').addEventListener("submit", async(e)=>{
+      console.log(4)
+      e.preventDefault()
+      if (isSubmitting) return;
+       isSubmitting = true;
+     
+       try {
+         // Handle Login Form
+         if (e.target.id === 'login-form') {
+           const email = e.target.querySelector('#login-id').value;
+           const password = e.target.querySelector('#login-password').value;
+           
+           if (validinfos({ email, password }, "login")) {
+             await sendlogininfo({ email, password });
+           }
+         }
+         // Handle Register Form
+         else if (e.target.classList.contains('register-form')) {
+           const username = e.target.querySelector('#nickname').value;
+           const age = e.target.querySelector('#age').value;
+           const gender = e.target.querySelector('#gender').value;
+           const firstname = e.target.querySelector('#first-name').value;
+           const lastname = e.target.querySelector('#last-name').value;
+           const email = e.target.querySelector('#email').value;
+           const password = e.target.querySelector('#password').value;
+     
+           if (validinfos({ username, age, gender, firstname, lastname, email, password }, "register")) {
+             await sendRegisterinfo({ username, age: +age, gender, firstname, lastname, email, password });
+           }
+         }
+       } finally {
+         isSubmitting = false;
+       }
+     })
+  }else{
+    servehome(info)
+  }
+}())
+window.addEventListener("scroll", () => {
+  // Check if we've scrolled to the bottom
+    console.log(    window.scrollY + window.innerHeight >=
+      document.documentElement.scrollHeight)
+})

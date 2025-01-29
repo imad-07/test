@@ -1,0 +1,241 @@
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+/* Vars */
+:root {
+  /* General */
+  --white: white;
+
+  /* Main Theme Colors */
+  --main-color: burlywood;
+  --primary-color: brown;
+  --subprimary-color: rgba(165, 42, 42, 0.711);
+  --secondary-color: #082640;
+  --background-color: #e4e4e4;
+  --background-secondary: #f7f7f7;
+  --text-color: #0a1126;
+  --text-sub: #b6b6b6;
+  --hover: #f1f1f1;
+  --transparent-bg: rgba(165, 42, 42, 0.5);
+
+  /* Borders and Shadows */
+  --border-color: #d4d4d4;
+  --shadow-sm: 0 2px 4px rgb(165, 42, 42, 0.05);
+  --shadow-md: 0 4px 8px rgb(165, 42, 42, 0.1);
+
+  /* Alerts */
+  --danger-color: #f23d5e;
+
+  /* Common Elements */
+  --transition: 0.3s ease-in-out;
+  --inputs-background: #f7f9f9;
+  --shadow-sm: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  --shadow-border: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Nunito", serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input,
+textarea,
+select {
+  transition: var(--transition);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 4px var(--primary-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-weight: bold;
+}
+
+/* Global */
+.container {
+  max-width: 1420px;
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 15px;
+}
+
+/* Body */
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* toast */
+.toast {
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 20px 35px 20px 25px;
+  box-shadow: var(--shadow-border);
+  overflow: hidden;
+  transform: translateX(calc(100% + 30px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+  z-index: 11;
+}
+
+.toast.active {
+  transform: translateX(0%);
+}
+
+.toast .toast-content {
+  display: flex;
+  align-items: center;
+}
+
+.toast-content .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+  background-color: #f44040;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.message .text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.message .text.text-1 {
+  font-weight: 600;
+  color: #333;
+}
+
+.toast .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.toast .close:hover {
+  opacity: 1;
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+}
+
+.toast .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  background-color: #f44040;
+}
+
+.toast .progress.active:before {
+  width: 100%;
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+
+.toast button {
+  padding: 12px 20px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  background-color: #4070f4;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toast button:hover {
+  background-color: #0e4bf1;
+}
+
+.toast.active ~ button {
+  pointer-events: none;
+}
+
+/* Old comments button */
+.old-comments-btn {
+  display: block;
+  margin: 10px auto;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.posts-error {
+  font-size: 22px;
+  text-align: center;
+  margin-top: 20px;
+  color: var(--danger-color);
+}
+
+.js-error {
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 30px;
+}

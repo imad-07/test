@@ -1,0 +1,858 @@
+/* Header */
+header {
+  background-color: var(--white);
+  padding-block: 0.8rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.logo-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.short_logo {
+  display: none;
+}
+
+.logo a img {
+  max-height: 30px;
+}
+
+/* login / signup */
+.login_signup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.login_signup .login {
+  color: var(--primary-color);
+  padding-inline: 0.8rem;
+  padding-block: 0.2rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+.login_signup .login:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+.login_signup .signup {
+  background-color: var(--main-color);
+  color: var(--text-color);
+  padding-inline: 0.8rem;
+  padding-block: 0.2rem;
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+  transition: all var(--transition);
+}
+
+.login_signup .signup:hover {
+  text-decoration: underline;
+}
+
+/* profile menu */
+
+.profile_menu .holder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.profile_menu .holder .profile_image {
+  max-width: 30px;
+  border: 1px solid var(--main-color);
+  border-radius: 4px;
+}
+
+.profile_menu .holder img {
+  height: 100%;
+}
+
+/* dropdown */
+/* Style The Dropdown Button */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  transition: all var(--transition);
+}
+
+.dropbtn {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all var(--transition);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  border-radius: 5px;
+  background-color: var(--white);
+  min-width: 135px;
+  box-shadow: var(--shadow-sm);
+  z-index: 3;
+  cursor: pointer;
+  right: 0;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: var(--text-color);
+  padding: 8px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: var(--background-color);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: var(--background-color);
+}
+
+/* end dropdown */
+.profile_menu .holder .username {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profile_menu .holder i {
+  font-size: 12px;
+}
+
+/* End Header */
+/* Start Main */
+main {
+  padding-bottom: 40px;
+}
+
+main .container {
+  padding-block: 1.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 20%) minmax(0, 80%);
+  gap: 1.5rem;
+  grid-template-areas: "left_aside main";
+}
+
+/* Left aside */
+.left_aside {
+  grid-area: left_aside;
+  width: 100%;
+}
+
+.left_aside section {
+  padding-block: 1rem;
+  padding-inline: 1.2rem;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow-border);
+}
+
+.left_aside section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+}
+
+.left_aside .filter .each_filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.4rem;
+  margin: 4px 0;
+  background-color: var(--background-secondary);
+  border-radius: 6px;
+}
+
+.left_aside .filter .each_filter:first-of-type {
+  color: #011126;
+  background-color: #236e8c37;
+}
+
+.left_aside .filter .each_filter:first-of-type:hover {
+  background-color: #236e8c57;
+}
+
+.left_aside .filter .each_filter:nth-of-type(2) {
+  color: #e84b25;
+  background-color: #ff843637;
+}
+
+.left_aside .filter .each_filter:nth-of-type(2):hover {
+  background-color: #ff843657;
+}
+
+.left_aside .filter .each_filter i {
+  font-size: 1.2rem;
+  padding-inline: 0.6rem;
+}
+
+.left_aside .filter .filter_content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 10px;
+}
+
+.left_aside .filter select {
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.left_aside .filter .filter_btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.left_aside .filter .filter_btns button {
+  width: 100%;
+  padding: 0.4rem;
+  margin: 4px 0;
+  border: none;
+  background-color: var(--background-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all var(--transition);
+}
+
+.left_aside .filter .filter_btns .submit {
+  color: #01401c;
+  background-color: #78bf3337;
+}
+
+.left_aside .filter .filter_btns .submit:hover {
+  background-color: #78bf3357;
+}
+
+.left_aside .filter .filter_btns .reset:hover {
+  background-color: var(--hover);
+}
+
+/* Main */
+.main {
+  grid-area: main;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+
+/* Creat Post Section */
+.create_post {
+  padding-block: 1rem;
+  padding-inline: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow-border);
+}
+
+.create_post .profile_img {
+  max-width: 2.4rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.create_post .profile_img img {
+  width: 100%;
+}
+
+.create_post input {
+  width: 100%;
+  background-color: var(--inputs-background);
+  border: none;
+  padding-inline: 0.5rem;
+  padding-block: 0.6rem;
+  font-size: 14px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-border);
+}
+
+.create_post input::placeholder {
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.create_post button {
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 6px;
+  color: var(--white);
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
+  min-width: fit-content;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.create_post button:hover {
+  background-color: var(--subprimary-color);
+}
+
+.filter_mobile {
+  display: none;
+}
+
+/* Modal Post */
+/* modal */
+/* The Modal (background) */
+.modal {
+  align-items: center;
+  justify-content: center;
+  display: none;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  overflow: auto;
+  background-color: var(--transparent-bg);
+}
+
+/* Modal Content */
+.modal_content {
+  padding: 1.5rem;
+  background-color: var(--white);
+  border-radius: 15px;
+  width: 80%;
+  box-shadow: var(--shadow-border);
+}
+
+.modal_header input {
+  width: 100%;
+  background-color: var(--inputs-background);
+  border: none;
+  padding-inline: 0.5rem;
+  padding-block: 0.8rem;
+  font-size: 14px;
+  border-radius: 6px;
+  box-shadow: none;
+  font-weight: 600;
+  box-shadow: var(--shadow-border);
+}
+
+.modal_header input::placeholder {
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.modal_body textarea {
+  width: 100%;
+  min-height: 45vh;
+  background-color: var(--inputs-background);
+  border: none;
+  padding-inline: 0.5rem;
+  padding-block: 0.8rem;
+  margin-top: 15px;
+  font-size: 14px;
+  border-radius: 6px;
+  box-shadow: none;
+  resize: none;
+  box-shadow: var(--shadow-border);
+}
+
+.modal_body textarea::placeholder {
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.modal_body h4 {
+  margin-block: 0.5rem;
+  font-size: 14px;
+}
+
+.modal_body ul {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.modal_body ul li .category {
+  padding: 0.2rem 0.9rem;
+  background-color: var(--background-color);
+  border: 1px dashed var(--main-color);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  user-select: none;
+  cursor: pointer;
+}
+
+.modal_body ul li .category:has(input:checked) {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.modal_body ul li .category input {
+  display: none;
+}
+
+.modal_footer {
+  margin-top: 20px;
+}
+
+.modal_footer .actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal_footer .publish_btn {
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 6px;
+  color: var(--white);
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.modal_footer .publish_btn:hover {
+  background-color: var(--subprimary-color);
+}
+
+.modal_footer .cancel_btn {
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  border-radius: 6px;
+  color: var(--text-color);
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.modal_footer .cancel_btn:hover {
+  background-color: var(--main-color);
+}
+
+/* Post Cards Section */
+.post_card {
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow-border);
+  margin: 10px 0;
+}
+
+.post_card .about_post .title h1 {
+  color: var(--text-color);
+  font-weight: 800;
+  line-height: 1.5;
+  padding-top: 5px;
+  word-wrap: break-word;
+}
+
+.post_card .about_post .categories {
+  padding: 15px 0 30px;
+}
+
+.post_card .about_post .categories ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.post_card .about_post .categories ul li {
+  padding: 0.3rem 0.9rem;
+  background-color: var(--background-color);
+  border: 1px dashed var(--main-color);
+  border-radius: 100px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.post_card .about_post .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post_card .about_post .info .author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.2;
+  /* something wrong here */
+}
+
+.post_card .about_post .info .author .profile_image {
+  max-width: 45px;
+}
+
+.post_card .about_post .info .author .profile_image img {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.post_card .about_post .info .author .about_author .username {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.post_card .about_post .info .author .about_author .created_at {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-sub);
+}
+
+/* reactions */
+.post_card .about_post .info .reactions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* likes */
+.post_card .about_post .info .reactions .likes {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.post_card .about_post .info .reactions .likes .total_likes {
+  font-size: 13px;
+}
+
+.post_card .about_post .info .reactions .likes img {
+  height: 25px;
+  cursor: pointer;
+}
+
+/* dislikes */
+.post_card .about_post .info .reactions .dislikes {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.post_card .about_post .info .reactions .dislikes .total_dislikes {
+  font-size: 13px;
+}
+
+.post_card .about_post .info .reactions .dislikes img {
+  height: 25px;
+  cursor: pointer;
+}
+
+/* comments */
+
+.post_card .about_post .info .reactions .comments .total_comments {
+  font-size: 13px;
+}
+
+.post_card .about_post .info .reactions .comments a {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.post_card .about_post .info .reactions .comments a svg {
+  height: 25px;
+}
+
+/* Media Query */
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+  .left_aside section {
+    padding-block: 0.6rem;
+    padding-inline: 0.8rem;
+    border-radius: 10px;
+  }
+
+  /* main */
+  main .container {
+    grid-template-columns: 25% 73%;
+    grid-template-areas: "left_aside main";
+    padding-block: 1rem;
+    gap: 1rem;
+  }
+  .main {
+    gap: 1rem;
+  }
+  /* Creat Post Section */
+  .create_post {
+    padding-block: 0.6rem;
+    padding-inline: 0.8rem;
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .create_post input {
+    width: 100%;
+  }
+
+  .post_card .about_post .title h1 {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .create_post button {
+    min-width: fit-content;
+  }
+
+  /* Post Cards Section */
+  .post_card {
+    padding-block: 0.6rem;
+    padding-inline: 0.8rem;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  main .container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "main";
+  }
+
+  .other_devices {
+    display: none;
+  }
+
+  .filter_mobile {
+    display: block;
+  }
+
+  .profile_menu .holder .profile_image {
+    display: none;
+  }
+
+  /* Left aside */
+  .left_aside .filter .filter_content {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .left_aside .filter a i {
+    font-size: 1rem;
+  }
+
+  .left_aside .filter h3 {
+    font-size: 12px;
+  }
+
+  .left_aside .filter .filter_btns button {
+    max-width: 100px;
+  }
+
+  /* main */
+  /* Creat Post Section */
+  .create_post {
+    padding-block: 0.6rem;
+    padding-inline: 0.8rem;
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .create_post input {
+    width: 100%;
+  }
+
+  .post_card .about_post .title h1 {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .create_post button {
+    font-size: 12px;
+    padding-inline: 0.4rem;
+  }
+
+  /* Modal Content */
+  .modal_content {
+    padding: 0.8rem;
+    border-radius: 10px;
+    width: 95%;
+  }
+}
+
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .short_logo {
+    display: inline;
+  }
+
+  .full_logo {
+    display: none;
+  }
+
+  .logo-search .search_toggle {
+    display: block;
+  }
+
+  /* aside left */
+  /* Left aside */
+
+  .left_aside .filter a i {
+    padding-left: 0;
+    padding-right: 0.4rem;
+  }
+
+  .left_aside .filter .filter_btns button {
+    max-width: none;
+  }
+
+  /* main */
+  /* Creat Post Section */
+  .create_post {
+    padding-block: 0.6rem;
+    padding-inline: 0.8rem;
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .create_post input {
+    width: 100%;
+  }
+
+  .post_card .about_post .title h1 {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .create_post .profile_img {
+    display: none;
+  }
+
+  .create_post button {
+    font-size: 12px;
+    padding-inline: 0.4rem;
+  }
+
+  /* Modal Content */
+  .modal_body h4 {
+    font-size: 12px;
+  }
+
+  .modal_body ul {
+    flex-wrap: wrap;
+  }
+
+  .modal_footer .publish_btn {
+    font-size: 14px;
+  }
+
+  .modal_footer .cancel_btn {
+    font-size: 14px;
+  }
+
+  /* Post Cards Section */
+  .post_card .about_post .title h1 {
+    font-weight: 700;
+  }
+
+  .post_card .about_post .categories {
+    padding: 15px 0 15px;
+  }
+
+  .post_card .about_post .info {
+    align-items: start;
+    flex-direction: column-reverse;
+    row-gap: 15px;
+  }
+
+  .post_card .about_post .info .author .profile_image {
+    max-width: 35px;
+  }
+
+  .post_card .about_post .info .author .about_author .username {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .post_card .about_post .info .author .about_author .created_at {
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* reactions */
+  .post_card .about_post .info .reactions {
+    gap: 15px;
+  }
+
+  /* likes */
+  .post_card .about_post .info .reactions .likes .total_likes {
+    font-size: 12px;
+  }
+
+  .post_card .about_post .info .reactions .likes svg {
+    height: 20px;
+  }
+
+  /* dislikes */
+  .post_card .about_post .info .reactions .dislikes .total_dislikes {
+    font-size: 12px;
+  }
+
+  .post_card .about_post .info .reactions .dislikes svg {
+    height: 20px;
+  }
+
+  /* comments */
+  .post_card .about_post .info .reactions .comments .total_comments {
+    font-size: 12px;
+  }
+
+  .post_card .about_post .info .reactions .comments svg {
+    height: 20px;
+  }
+}
+
+/* Show old posts btn */
+.old-posts-btn {
+  margin: 30px auto 0;
+  display: block;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 16px;
+  color: white;
+  background: rgb(0 0 0 / 86%);
+  border: none;
+  border-radius: 200px;
+}

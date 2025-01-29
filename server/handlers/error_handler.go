@@ -1,12 +1,6 @@
 package handler
 
-import (
-	"fmt"
-	"html/template"
-	"net/http"
-)
-
-func ErrorHandler(w http.ResponseWriter, status int, errMsg string, description string) {
+/*func ErrorHandler(w http.ResponseWriter, status int, errMsg string, description string) {
 	// Parse
 	t, err := template.ParseFiles("../client/templates/error.html")
 	if err != nil {
@@ -31,4 +25,4 @@ func ErrorHandler(w http.ResponseWriter, status int, errMsg string, description 
 		fmt.Println("Error Executing Error Page", err)
 		return
 	}
-}
+}*/

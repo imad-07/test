@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/client/assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Login | Forum</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="/client/assets/css/main.css" />
+    <link rel="stylesheet" href="/client/assets/css/signup_login.css" />
+    <!-- fontawesom -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <noscript>
+      <style>
+        header,
+        section,
+        main {
+          display: none;
+        }
+      </style>
+      <p class="js-error">Please run the js</p>
+    </noscript>
+    <main>
+      <div class="container">
+        <div class="content">
+          <div class="login image_side">
+            <p class="quote">
+              "A good discussion starts with a single thought."
+            </p>
+            <img
+              class="logo"
+              src="/client/assets/img/orca-white.png"
+              alt="logo"
+            />
+          </div>
+          <div class="form">
+            <h2>Good to see you again!</h2>
+            <p>Log in to pick up where you left off.</p>
+            <form class="login-form">
+              <div class="field">
+                <label for="email">email</label>
+                <input
+                  type="email"
+                  placeholder="example@mail.com"
+                  id="email"
+                  maxlength="50"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  placeholder="***********"
+                  id="password"
+                  maxlength="30"
+                  required
+                />
+              </div>
+              <span class="error"></span>
+              <button class="submti">Login</button>
+            </form>
+            <span class="line">or</span>
+            <a class="google_link" href="/commingsoon">
+              <i class="fa-brands fa-google"></i>
+            </a>
+            <span class="redirect"
+              >Don't have an account? <a href="/signup">Create Now</a></span
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Script -->
+    <script src="/client/assets/script/auth.js" type="module"></script>
+  </body>
+</html>

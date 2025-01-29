@@ -1,16 +1,10 @@
 package handler
 
-import (
-	"fmt"
-	"html/template"
-	"net/http"
-)
-
-func ServeFeaturesPage(w http.ResponseWriter, r *http.Request) {
+/*func ServeFeaturesPage(w http.ResponseWriter, r *http.Request) {
 	// Parse
 	t, err := template.ParseFiles("../client/templates/commingsoon.html")
 	if err != nil {
-		ErrorHandler(w, http.StatusInternalServerError, "inernal Server Error", "Error While Parsing commingsoon.html")
+		//ErrorHandler(w, http.StatusInternalServerError, "inernal Server Error", "Error While Parsing commingsoon.html")
 		return
 	}
 
@@ -20,4 +14,4 @@ func ServeFeaturesPage(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Error Executing Error Page", err)
 		return
 	}
-}
+}*/

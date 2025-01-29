@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 	"strconv"
@@ -131,7 +130,7 @@ func (p *PostHandler) GetPostHandler(w http.ResponseWriter, r *http.Request) {
 	if (len(query["categorie"]) != 0 && query["categorie"][0] != "") || (len(query["posts"]) != 0 && query["posts"][0] != "") {
 		posts, err := p.PostService.FilterPosts(num, posts, r, id)
 		if err != nil {
-			 if err == sql.ErrNoRows {
+			if err == sql.ErrNoRows {
 				helpers.WriteJson(w, http.StatusOK, PostResponse{MetaData: postsMetaData, Posts: []shareddata.Post{}})
 				return
 			}
@@ -201,12 +200,12 @@ func (p *PostHandler) GetPostByIdHandler(w http.ResponseWriter, r *http.Request)
 	helpers.WriteJson(w, http.StatusOK, post)
 }
 
-func ServePostPage(w http.ResponseWriter, r *http.Request) {
+/*func ServePostPage(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("../client/templates/post.html")
 	if err != nil {
-		ErrorHandler(w, http.StatusInternalServerError, "inernal Server Error", "Error While Parsing index.html")
+		//ErrorHandler(w, http.StatusInternalServerError, "inernal Server Error", "Error While Parsing index.html")
 		log.Println("Unexpected error", err)
 		return
 	}
 	t.Execute(w, nil)
-}
+}*/

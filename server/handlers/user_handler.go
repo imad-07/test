@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 
@@ -35,7 +34,7 @@ func NewUserHandler(db *sql.DB) *UserHandler {
 
 func (h *UserHandler) SignUpHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		ErrorHandler(w, http.StatusMethodNotAllowed, "Method Not Allowed", "Maybe GET Method Will Work!")
+		//	ErrorHandler(w, http.StatusMethodNotAllowed, "Method Not Allowed", "Maybe GET Method Will Work!")
 		return
 	}
 
@@ -87,7 +86,7 @@ func (h *UserHandler) SignUpHandler(w http.ResponseWriter, r *http.Request) {
 	// http.Redirect(w, r, "/login", http.StatusSeeOther)
 }
 
-func (h *UserHandler) ServeSignUpPage(w http.ResponseWriter, r *http.Request) {
+/*func (h *UserHandler) ServeSignUpPage(w http.ResponseWriter, r *http.Request) {
 	// check method
 	if r.Method != http.MethodGet {
 		ErrorHandler(w, http.StatusMethodNotAllowed, "Method Not Allowed", "Maybe GET Method Will Work!")
@@ -107,7 +106,7 @@ func (h *UserHandler) ServeSignUpPage(w http.ResponseWriter, r *http.Request) {
 	// Parse
 	t, err := template.ParseFiles("../client/templates/signup.html")
 	if err != nil {
-		ErrorHandler(w, http.StatusInternalServerError, "Internal Server Error", "Error While Parsing signup.html.")
+		//ErrorHandler(w, http.StatusInternalServerError, "Internal Server Error", "Error While Parsing signup.html.")
 		return
 	}
 
@@ -117,12 +116,12 @@ func (h *UserHandler) ServeSignUpPage(w http.ResponseWriter, r *http.Request) {
 		ErrorHandler(w, http.StatusInternalServerError, "Internal Server Error", "Error While Executing signup.html")
 		return
 	}
-}
+}*/
 
 // Login
 func (h *UserHandler) LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		ErrorHandler(w, http.StatusMethodNotAllowed, "Method Not Allowed", "Maybe POST Method Will Work!")
+		// ErrorHandler(w, http.StatusMethodNotAllowed, "Method Not Allowed", "Maybe POST Method Will Work!")
 		return
 	}
 
@@ -180,10 +179,10 @@ func (h *UserHandler) LoginHandler(w http.ResponseWriter, r *http.Request) {
 	// http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
-func (h *UserHandler) ServeLoginPage(w http.ResponseWriter, r *http.Request) {
+/*func (h *UserHandler) ServeLoginPage(w http.ResponseWriter, r *http.Request) {
 	// check method
 	if r.Method != http.MethodGet {
-		ErrorHandler(w, http.StatusMethodNotAllowed, "Method Not Allowed", "Maybe GET Method Will Work!")
+		//ErrorHandler(w, http.StatusMethodNotAllowed, "Method Not Allowed", "Maybe GET Method Will Work!")
 		return
 	}
 
@@ -200,17 +199,17 @@ func (h *UserHandler) ServeLoginPage(w http.ResponseWriter, r *http.Request) {
 	// Parse
 	t, err := template.ParseFiles("../ui/templates/index.html")
 	if err != nil {
-		ErrorHandler(w, http.StatusInternalServerError, "Internal Server Error", "Error While Parsing login.html")
+		//ErrorHandler(w, http.StatusInternalServerError, "Internal Server Error", "Error While Parsing login.html")
 		return
 	}
 
 	// Execute
 	err = t.Execute(w, nil)
 	if err != nil {
-		ErrorHandler(w, http.StatusInternalServerError, "Internal Server Error", "Error While Executing login.html")
+		//ErrorHandler(w, http.StatusInternalServerError, "Internal Server Error", "Error While Executing login.html")
 		return
 	}
-}
+}*/
 
 // Helpers
 func SetSessionCookie(w http.ResponseWriter, uid string) {
