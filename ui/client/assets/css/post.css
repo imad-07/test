@@ -1,0 +1,780 @@
+/* Header */
+header {
+  background-color: var(--white);
+  padding-block: 0.8rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.logo-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.short_logo {
+  display: none;
+}
+
+.logo a img {
+  max-height: 30px;
+}
+
+/* login / signup */
+.login_signup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.login_signup .login {
+  color: var(--primary-color);
+  padding-inline: 0.8rem;
+  padding-block: 0.2rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+.login_signup .login:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+.login_signup .signup {
+  background-color: var(--main-color);
+  color: var(--text-color);
+  padding-inline: 0.8rem;
+  padding-block: 0.2rem;
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+  transition: all var(--transition);
+}
+
+.login_signup .signup:hover {
+  text-decoration: underline;
+}
+
+/* profile menu */
+.profile_menu .holder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.profile_menu .holder .profile_image {
+  max-width: 30px;
+  border: 1px solid var(--main-color);
+  border-radius: 4px;
+}
+
+.profile_menu .holder img {
+  height: 100%;
+}
+
+/* dropdown */
+/* Style The Dropdown Button */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  transition: all var(--transition);
+}
+
+.dropbtn {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all var(--transition);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  border-radius: 5px;
+  background-color: var(--white);
+  min-width: 135px;
+  box-shadow: var(--shadow-sm);
+  z-index: 3;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: var(--text-color);
+  padding: 8px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: var(--background-color);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: var(--background-color);
+}
+
+/* end dropdown */
+.profile_menu .holder .username {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profile_menu .holder i {
+  font-size: 12px;
+}
+
+/* End Header */
+/* Start Main */
+
+main .container {
+  padding-block: 1.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 30%) minmax(0, 70%);
+  gap: 1.5rem;
+  grid-template-areas: "left_aside main";
+}
+
+main .search {
+  grid-area: search;
+  display: none;
+}
+
+/* Left aside */
+.about_author {
+  grid-area: left_aside;
+  width: 100%;
+}
+
+.about_author .author {
+  padding-block: 1.5rem;
+  padding-inline: 1.2rem;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.about_author .author .profile_image {
+  max-width: 100px;
+}
+
+.about_author .author .profile_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.about_author .author .username {
+  text-transform: capitalize;
+  padding-block: 0.5rem 0;
+}
+
+.about_author .author .usersince {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-sub);
+}
+
+/* Main */
+.main {
+  grid-area: main;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Post Cards Section */
+.post_card {
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow-border);
+}
+
+.post_card .about_post {
+  padding-inline: 20px;
+}
+
+.post_card .about_post .title {
+  color: var(--text-color);
+  font-weight: 800;
+  line-height: 1.5;
+  padding-top: 5px;
+  word-wrap: break-word;
+}
+
+.post_card .about_post .categories {
+  padding: 20px 0;
+}
+
+.post_card .about_post .categories ul {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post_card .about_post .categories ul li {
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.post_card .about_post .content pre {
+  font-weight: 500;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+/* reactions */
+.post_card .about_post .reactions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-block: 1rem 2.4rem;
+}
+
+/* likes */
+.post_card .about_post .reactions .likes {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.post_card .about_post .reactions .likes .total_likes {
+  font-size: 13px;
+}
+
+.post_card .about_post .reactions .likes img {
+  height: 25px;
+  cursor: pointer;
+}
+
+/* dislikes */
+.post_card .about_post .reactions .dislikes {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.post_card .about_post .reactions .dislikes .total_dislikes {
+  font-size: 13px;
+}
+
+.post_card .about_post .reactions .dislikes img {
+  height: 25px;
+  cursor: pointer;
+}
+
+/* comments */
+
+.post_card .about_post .reactions .comments .total_comments {
+  font-size: 13px;
+}
+
+.post_card .about_post .reactions .comments a {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.post_card .about_post .reactions .comments a svg {
+  height: 25px;
+}
+
+/* comments */
+
+.post_card .about_post .comments .add_comment {
+  display: flex;
+  align-items: start;
+  margin-bottom: 30px;
+}
+
+.post_card .about_post .comments .add_comment .profile_image {
+  width: 50px;
+}
+
+.post_card .about_post .comments .add_comment .profile_image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.post_card .about_post .comments .add_comment .comment_input {
+  width: 100%;
+  display: flex;
+}
+
+.post_card .about_post .comments .add_comment .comment_input textarea {
+  width: 100%;
+  background-color: var(--inputs-background);
+  border: none;
+  padding-inline: 0.5rem;
+  padding-block: 0.8rem;
+  margin-inline: 20px;
+  font-size: 14px;
+  border-radius: 6px;
+  box-shadow: none;
+  resize: none;
+  box-shadow: var(--shadow-border);
+}
+
+.post_card .about_post .comments .add_comment .comment_input .btn_comment {
+  height: 36px;
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 6px;
+  color: var(--white);
+  padding-inline: 1rem;
+  cursor: pointer;
+}
+
+.post_card .about_post .comments .old_comments .comment {
+  display: flex;
+  align-items: start;
+  gap: 25px;
+}
+
+.post_card .about_post .comments .old_comments .comment .profile_image {
+  width: 46.3px;
+}
+
+.post_card .about_post .comments .old_comments .comment .profile_image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+}
+
+.post_card .about_post .comments .old_comments .comment .comment_info {
+  width: 100%;
+}
+
+.post_card .about_post .comments .old_comments .comment .comment_info .border {
+  padding: 12px 10px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-border);
+  word-break: break-word;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .username {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .username
+  .comments_at {
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 5px;
+  color: var(--text-sub);
+}
+
+.post_card .about_post .comments .old_comments .comment .comment_info .content {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.3;
+  padding-top: 5px;
+  margin-bottom: 0;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .reactions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-inline: 10px;
+  margin-top: 10px;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .reactions
+  .likes
+  a {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .reactions
+  .likes
+  a
+  span {
+  font-size: 13px;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .reactions
+  .likes
+  a
+  svg {
+  height: 25px;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .reactions
+  .dislikes
+  a {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .reactions
+  .dislikes
+  a
+  span {
+  font-size: 13px;
+}
+
+.post_card
+  .about_post
+  .comments
+  .old_comments
+  .comment
+  .comment_info
+  .reactions
+  .dislikes
+  a
+  svg {
+  height: 25px;
+}
+
+/* End Post Card Section */
+/* Start Author Section (Right aside) */
+
+/* Media Query */
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+  /* main */
+  main .container {
+    grid-template-columns: 25% 73%;
+    grid-template-areas: "left_aside main";
+    padding-block: 1rem;
+    gap: 1rem;
+  }
+  .main {
+    gap: 1rem;
+  }
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  main .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left_aside"
+      "main";
+  }
+
+  .profile_menu .holder .profile_image {
+    display: none;
+  }
+
+  /* main */
+  .post_card .about_post {
+    padding-inline: 0px;
+  }
+
+  .post_card .about_post .title {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .post_card .about_post .categories {
+    padding: 10px 0;
+  }
+
+  .post_card .about_post .categories ul li {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .post_card .about_post .reactions {
+    margin-block: 0.5rem 1.5rem;
+  }
+
+  .post_card .about_post .content p {
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 14px;
+  }
+
+  .post_card .about_post .comments .add_comment {
+    gap: 10px;
+  }
+
+  .post_card .about_post .comments .add_comment .profile_image {
+    width: 35px;
+  }
+
+  .post_card .about_post .comments .add_comment .comment_input {
+    gap: 10px;
+  }
+
+  .post_card .about_post .comments .add_comment .comment_input textarea {
+    margin-inline: 0;
+  }
+
+  .post_card .about_post .comments .add_comment .comment_input .btn_comment {
+    height: 30px;
+    padding-inline: 0.7rem;
+  }
+
+  .post_card .about_post .comments .old_comments .comment {
+    gap: 10px;
+  }
+
+  .post_card .about_post .comments .old_comments .comment .profile_image {
+    width: 35px;
+  }
+
+  /* Start Author Section (Right aside) */
+
+  .about_author .author {
+    padding-block: 0.6rem;
+    padding-inline: 0.8rem;
+    border-radius: 10px;
+  }
+
+  .about_author .author .profile_image {
+    max-width: 60px;
+  }
+
+  .about_author .author .username {
+    font-size: 16px;
+  }
+
+  .about_author .author .usersince {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-sub);
+  }
+}
+
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .short_logo {
+    display: inline;
+  }
+
+  .full_logo {
+    display: none;
+  }
+
+  /* main */
+  .post_card .about_post .title {
+    font-size: 14px;
+  }
+
+  /* reactions */
+  .post_card .about_post .reactions {
+    gap: 15px;
+  }
+
+  /* likes */
+  .post_card .about_post .reactions .likes .total_likes {
+    font-size: 12px;
+  }
+
+  .post_card .about_post .reactions .likes svg {
+    height: 20px;
+  }
+
+  /* dislikes */
+  .post_card .about_post .reactions .dislikes .total_dislikes {
+    font-size: 12px;
+  }
+
+  .post_card .about_post .reactions .dislikes svg {
+    height: 20px;
+  }
+
+  /* comments */
+  .post_card .about_post .reactions .comments .total_comments {
+    font-size: 12px;
+  }
+
+  .post_card .about_post .reactions .comments svg {
+    height: 20px;
+  }
+
+  /*  */
+  .post_card .about_post .comments .add_comment .comment_input {
+    flex-direction: column;
+    align-items: end;
+  }
+
+  .post_card .about_post .comments .old_comments .comment .profile_image {
+    display: none;
+  }
+
+  .post_card
+    .about_post
+    .comments
+    .old_comments
+    .comment
+    .comment_info
+    .username {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .post_card
+    .about_post
+    .comments
+    .old_comments
+    .comment
+    .comment_info
+    .username
+    .comments_at {
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* reactions */
+  .post_card
+    .about_post
+    .comments
+    .old_comments
+    .comment
+    .comment_info
+    .reactions {
+    gap: 15px;
+    margin-top: 5px;
+  }
+
+  /* likes */
+  .post_card
+    .about_post
+    .comments
+    .old_comments
+    .comment
+    .comment_info
+    .reactions
+    .likes
+    a
+    span {
+    font-size: 12px;
+  }
+
+  .post_card
+    .about_post
+    .comments
+    .old_comments
+    .comment
+    .comment_info
+    .reactions
+    .likes
+    a
+    svg {
+    height: 20px;
+  }
+
+  /* dislikes */
+  .post_card
+    .about_post
+    .comments
+    .old_comments
+    .comment
+    .comment_info
+    .reactions
+    .dislikes
+    a
+    span {
+    font-size: 12px;
+  }
+
+  .post_card .about_post .info .reactions .dislikes svg {
+    height: 20px;
+  }
+
+  /* comments */
+  .post_card .about_post .info .reactions .comments .total_comments {
+    font-size: 12px;
+  }
+
+  .post_card
+    .about_post
+    .comments
+    .old_comments
+    .comment
+    .comment_info
+    .reactions
+    .dislikes
+    a
+    svg {
+    height: 20px;
+  }
+}
