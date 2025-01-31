@@ -2,6 +2,8 @@ var info = {}
 await getInfoData().then(i =>{
   info = i 
 })
+let num = 0
+let loading = false; 
 let isSubmitting = false;
 function createSidebar(user) {
     // Create the main sidebar container
@@ -100,13 +102,10 @@ function createSidebar(user) {
     // Append the sidebar to the body
     document.querySelector(".container").appendChild(sidebar);
     let logoutbtn = document.querySelector(".LO")
-logoutbtn.addEventListener('click',function(){
+    logoutbtn.addEventListener('click',function(){
   logout()
 })
-  }
-  
-  // Call the function to create and append the sidebar
-  //createSidebar();
+  };
   document.querySelectorAll('.like, .dislike, .comment').forEach((element) => {
     element.addEventListener('click', () => {
       element.classList.toggle('active');
@@ -116,9 +115,6 @@ logoutbtn.addEventListener('click',function(){
             let sidebar = document.querySelector(".sidebar")
             sidebar.remove()
   }
-  /*
-*/
-
 function Removecard(){
   let card = document.querySelector(".Form") || null
   if (card != null){
@@ -307,7 +303,88 @@ function createCard() {
   form.classList.add("Form")
   form.appendChild(card)
   container.appendChild(form);
+switchToRegister.addEventListener('click', () => {
+  card.classList.add('flipped');
+});
+
+switchToLogin.addEventListener('click', () => {
+  card.classList.remove('flipped');
+});
   return card;
+}
+function createcomment(Comment, container) {
+  // Create the main coment container
+  const coment = document.createElement('div');
+  coment.classList.add('coment');
+
+  // Create the user info section
+  const userInfo = document.createElement('div');
+  userInfo.classList.add('user-info');
+
+  const avatar = document.createElement('img');
+  avatar.src = '/ui/css/default-profile.jpg';
+  avatar.alt = 'User Avatar';
+  avatar.classList.add('avatar');
+
+  const userDetails = document.createElement('div');
+  userDetails.classList.add('user-details');
+
+  const username = document.createElement('h4');
+  username.classList.add('username');
+  username.textContent = Comment.author;
+
+  const timestamp = document.createElement('p');
+  timestamp.classList.add('timestamp');
+  timestamp.textContent = Comment.date;
+
+  userDetails.appendChild(username);
+  userDetails.appendChild(timestamp);
+  userInfo.appendChild(avatar);
+  userInfo.appendChild(userDetails);
+
+  // Create the coment content
+  const comentContent = document.createElement('p');
+  comentContent.classList.add('coment-content');
+  comentContent.textContent = Comment.content;
+
+  // Create the coment actions section
+  const comentActions = document.createElement('div');
+  comentActions.classList.add('coment-actions');
+
+  // Like button and notification
+  const like = document.createElement('div');
+  like.classList.add('like');
+
+  const likeButton = document.createElement('button');
+  likeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#707C97"><path d="M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Zm-72-30v72H120v336h144v72H48v-480h216Z"/></svg>`;
+  const likeNotification = document.createElement('span');
+  likeNotification.classList.add('notification-icon');
+  likeNotification.textContent = Comment.likes;
+
+  like.appendChild(likeButton);
+  like.appendChild(likeNotification);
+
+  // Dislike button and notification
+  const dislike = document.createElement('div');
+  dislike.classList.add('dislike');
+  const dislikeButton = document.createElement('button');
+  dislikeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#707C97"><path d="M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Zm72 30v-72h144v-336H696v-72h216v480H696Z"/></svg>`;
+  const dislikeNotification = document.createElement('span');
+  dislikeNotification.classList.add('notification-icon');
+  dislikeNotification.textContent = Comment.dislikes;
+
+  dislike.appendChild(dislikeButton);
+  dislike.appendChild(dislikeNotification);
+
+  // Append all coment actions to the coment-actions container
+  comentActions.appendChild(like);
+  comentActions.appendChild(dislike);
+  // Append all sections to the coment
+  coment.appendChild(userInfo);
+  coment.appendChild(comentContent);
+  coment.appendChild(comentActions);
+  coment.id = Comment.id
+  container.appendChild(coment)
 }
 function createPost(Post) {
   // Create the main post container
@@ -396,7 +473,7 @@ function createPost(Post) {
 
   // Comment button and notification
   const comment = document.createElement('div');
-  comment.classList.add('comment');
+  comment.classList.add('comments');
 
   const commentButton = document.createElement('button');
   const commentSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -416,43 +493,47 @@ function createPost(Post) {
 
   comment.appendChild(commentButton);
   comment.appendChild(commentNotification);
-
-  // Show more button
-  const showMoreContainer = document.createElement('div');
-  showMoreContainer.classList.add('showmore-container');
-
-  const showMoreLink = document.createElement('a');
-  showMoreLink.href = '#';
-  showMoreLink.classList.add('showmore');
-  showMoreLink.textContent = 'more';
-
-  const showMoreSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  showMoreSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-  showMoreSvg.setAttribute('height', '10px');
-  showMoreSvg.setAttribute('viewBox', '0 -960 960 960');
-  showMoreSvg.setAttribute('width', '10px');
-  showMoreSvg.setAttribute('fill', '#707C97');
-  const showMorePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  showMorePath.setAttribute('d', 'M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z');
-  showMoreSvg.appendChild(showMorePath);
-  showMoreLink.appendChild(showMoreSvg);
-
-  const showMoreButton = document.createElement('button');
-  showMoreButton.classList.add('btn');
-  showMoreLink.appendChild(showMoreButton);
-
-  showMoreContainer.appendChild(showMoreLink);
-
   // Append all post actions to the post-actions container
   postActions.appendChild(like);
   postActions.appendChild(dislike);
   postActions.appendChild(comment);
-  postActions.appendChild(showMoreContainer);
-
+  let commentscontainer = document.createElement("div")
+  commentscontainer.style.display = "none"
+  commentscontainer.classList.add("comments-section")
+  let cmtnum = 1
+  comment.addEventListener("click", async function(){
+    if (commentscontainer.style.display == "none"){
+    let cmtloading = false
+    commentscontainer.style.display = "block"
+    let cmnts = await loadPosComments(Post.id,cmtnum);
+    if (cmnts !== "baraka elik"){
+      cmnts.forEach(cmt => createcomment(cmt,commentscontainer));
+      cmtnum++
+    commentscontainer.addEventListener("scroll", async () => {
+      if (commentscontainer.scrollTop + commentscontainer.clientHeight >= commentscontainer.scrollHeight * 0.95 && !cmtloading || cmtnum == 1){
+    try {
+      let cmnts = await loadPosComments(Post.id,cmtnum);
+      if (cmnts !== "baraka elik"){
+      cmnts.forEach(cmt => createcomment(cmt,commentscontainer));
+      commentscontainer.scrollTo(0, commentscontainer.scrollHeight*0.80)
+      cmtnum = cmtnum+1
+      cmtloading = false;
+      }
+    } catch (error) {
+      console.error("Error loading comments:", error);
+    }
+  }
+  })}
+}else{
+  commentscontainer.style.display = "none"
+}
+})
   // Append all sections to the post
   post.appendChild(userInfo);
   post.appendChild(postContent);
   post.appendChild(postActions);
+  post.appendChild(commentscontainer);
+  post.id = Post.id
   let postsection = document.querySelector(".posts-section")
   if (postsection == null){
     postsection = document.createElement("div")
@@ -462,27 +543,44 @@ function createPost(Post) {
   // Append the post to the body
   postsection.appendChild(post);
   container.appendChild(postsection)
+  postsection.addEventListener("scroll", async () => {
+    if (postsection.scrollTop + postsection.clientHeight >= postsection.scrollHeight&& !loading) {
+      loading = true;
+      console.log("Loading more posts...");
+      try {
+        let posts = await loadPosts(num);
+        if(posts!= "baraka elik"){
+          posts.forEach(post => createPost(post));
+          postsection.scrollTo(0, postsection.scrollHeight*0.80)
+          num = num+1
+          loading = false;
+        }
+        
+      } catch (error) {
+        console.error("Error loading posts:", error);
+      }
+    }
+  })
 }
  function validinfos(user,action){
   function validbs(fields){
     for (const field of fields) {
       if (!user[field]) {
-        errorSpan.textContent = errorMessages.required;
         return false;
       }
     }
     return true;
    }
   if (action == "login"){
-
     if (!validateEmail(email)) return false;
     if (!validatePassword(password)) return false;
   }else if (action == "register"){
     const {username, age, gender, firstname, lastname, email, password} = user
-    if (!validbs(["username", "age", "gender", "firstname", "lastname", "email", "password"])) return false;
-    if (!validateEmail(email)) return false;
-    if (!validatePassword(password)) return false;
-    if (!validlen(username,3,15) || !validlen(firstname,3,15) || !validlen(lastname,3,15) || (age > 100 || age < 12) || (gender != "Male" && gender != "Female")) return false;
+
+    if (!validbs(["username", "age", "gender", "firstname", "lastname", "email", "password"]))return false;
+    if (!validateEmail(email))return false;
+    if (!validatePassword(password))return false;
+    if (!validlen(username,3,15) || !validlen(firstname,3,15) || !validlen(lastname,3,15) || (age > 100 || age < 12) || (gender != "male" && gender != "female")) { console.log(user);return false};
   }
   return true
  }
@@ -514,12 +612,10 @@ function createPost(Post) {
       body: JSON.stringify(user),
     })
     if (data.ok){
+      let card = document.querySelector(".card")
       card.classList.remove('flipped')
-    }else{
-      console.log(data)
     }
   } catch (error) {
-    console.log(error)
   }
  }
 async function sendlogininfo(user){
@@ -545,7 +641,8 @@ async function sendlogininfo(user){
 async function servehome(user){
   Removecard()
   createSidebar(user)
- loadPosts().then(posts => {
+ loadPosts(num).then(posts => {
+   num++
   for (let post in posts){
     createPost(posts[post])
    }
@@ -554,17 +651,19 @@ async function servehome(user){
 async function logout(){
       document.querySelector(".container").innerHTML = "";
       createCard()
-      document.cookie ="session_token=;Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;"
-      
+      document.cookie ="session_token=;Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;"  
 }
 async function fetchPosts(num){
   const res = await fetch(`/api/post/?page-number=${num}`);
   const data = await res.json();
   return data;
 }
-async function loadPosts() {
-  let response = await fetchPosts(0);
+async function loadPosts(num) {
+  let response = await fetchPosts(num);
   let posts = response.Posts;
+  if (posts.length == 0){
+    return "baraka elik"
+  }
   return posts;
 }
 async function getInfoData(){
@@ -574,17 +673,26 @@ async function getInfoData(){
     return data;
   }
 }
+async function fetchComments(postId, cnum){
+  const res = await fetch(`/api/post/${postId}/comments/${cnum}`);
+  return await res.json();
+}
+async function loadPosComments(postId,cnum) {
+  let response = await fetchComments(postId,cnum);
+  let comments = response.Comments;
+  if(comments.length == 0){
+     return "baraka elik"
+  }
+  console.log(comments)
+  return comments;
+}
 (async function(){
-  console.log(info)
- 
   if (!info.authorize){
     createCard()
     document.querySelector('.container').addEventListener("submit", async(e)=>{
-      console.log(4)
       e.preventDefault()
       if (isSubmitting) return;
        isSubmitting = true;
-     
        try {
          // Handle Login Form
          if (e.target.id === 'login-form') {
@@ -606,7 +714,7 @@ async function getInfoData(){
            const password = e.target.querySelector('#password').value;
      
            if (validinfos({ username, age, gender, firstname, lastname, email, password }, "register")) {
-             await sendRegisterinfo({ username, age: +age, gender, firstname, lastname, email, password });
+           await sendRegisterinfo({ username, age: +age, gender, firstname, lastname, email, password });
            }
          }
        } finally {
@@ -616,9 +724,4 @@ async function getInfoData(){
   }else{
     servehome(info)
   }
-}())
-window.addEventListener("scroll", () => {
-  // Check if we've scrolled to the bottom
-    console.log(    window.scrollY + window.innerHeight >=
-      document.documentElement.scrollHeight)
-})
+}());

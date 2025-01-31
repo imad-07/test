@@ -25,7 +25,7 @@ func Routes(db *sql.DB) *http.ServeMux {
 	sf := http.FileServer(http.Dir("../ui"))
 	mux.Handle("/ui/", http.StripPrefix("/ui", sf))
 
-	addCommentHandler := ratelimiter.AddCommentsLimter.RateMiddleware(http.HandlerFunc(commentHandler.AddCommentHandler), 10, 2*time.Second, db)
+	addCommentHandler := ratelimiter.AddCommentsLimter.RateMiddleware(http.HandlerFunc(commentHandler.AddCommentHandler), 100, 2*time.Second, db)
 
 	mux.Handle("/api/comment", middlewares.MethodMiddleware(addCommentHandler, http.MethodPost))
 

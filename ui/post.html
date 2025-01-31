@@ -1,184 +1,30 @@
-<div class="post">
-    <div class="user-info">
-      <img src="css/default-profile.jpg" alt="User Avatar" class="avatar" />
-      <div class="user-details">
-        <h4 class="username">Cristiano Ronaldo</h4>
-        <p class="timestamp">1 minute ago</p>
-      </div>
-    </div>
-    <p class="post-content">
-      Most of its text is made up from sections 1.10.32–3 of Cicero's *De finibus Bonorum et Malorum*.
-    </p>
-    <div class="post-actions">
-      <div class="like">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#707C97"><path d="M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Zm-72-30v72H120v336h144v72H48v-480h216Z"/></svg>
-        </button>
-      <span class="notification-icon">200</span>
-    </div>
-      <div class="dislike">
-        <button>
-      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#707C97"><path d="M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Zm72 30v-72h144v-336H696v-72h216v480H696Z"/></svg>
-        </button>
-      <span class="notification-icon">300</span>
-    </div>
-    <div class="comment">
-      <button>
-      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#707C97"><path d="M864-96 720-240H360q-29.7 0-50.85-21.15Q288-282.3 288-312v-48h384q29.7 0 50.85-21.15Q744-402.3 744-432v-240h48q29.7 0 50.85 21.15Q864-629.7 864-600v504ZM168-462l42-42h390v-288H168v330ZM96-288v-504q0-29.7 21.15-50.85Q138.3-864 168-864h432q29.7 0 50.85 21.15Q672-821.7 672-792v288q0 29.7-21.15 50.85Q629.7-432 600-432H240L96-288Zm72-216v-288 288Z"/></svg>
-    </button>
-      <span class="notification-icon">300</span>
-    </div>
-    <div class="showmore-container">
-      <a href="#" class="showmore">more<svg xmlns="http://www.w3.org/2000/svg" height="10px" viewBox="0 -960 960 960" width="10px" fill="#707C97"><path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z"/></svg><button class="btn"></button></a>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/ui/css/styles.css">
+<body>
+  <div class = "container">
+    <div class = "posts-section">
+      <div class="post">
+        <div class="user-info">
+          <img src="/ui/css/default-profile.jpg" alt="User Avatar" class="avatar" />
+          <div class="user-details">
+            <h4 class="username">Cristiano Ronaldo</h4>
+            <p class="timestamp">1 minute ago</p>
+          </div>
+        </div>
+        <p class="post-content">
+          Most of its text is made up from sections 1.10.32–3 of Cicero's *De finibus Bonorum et Malorum*.
+        </p>
+        <div class = "categories">
+          <div class="categorie football">football</div>
+          <div class="categorie cars">cars</div>
+          <div class="categorie ronaldo">ronaldo</div>
+        </div>
     </div>
   </div>
-  ////
-  function createPost() {
-    // Create the main post container
-    const post = document.createElement('div');
-    post.classList.add('post');
-  
-    // Create the user info section
-    const userInfo = document.createElement('div');
-    userInfo.classList.add('user-info');
-  
-    const avatar = document.createElement('img');
-    avatar.src = 'css/default-profile.jpg';
-    avatar.alt = 'User Avatar';
-    avatar.classList.add('avatar');
-  
-    const userDetails = document.createElement('div');
-    userDetails.classList.add('user-details');
-  
-    const username = document.createElement('h4');
-    username.classList.add('username');
-    username.textContent = username;
-  
-    const timestamp = document.createElement('p');
-    timestamp.classList.add('timestamp');
-    timestamp.textContent = posttime;
-  
-    userDetails.appendChild(username);
-    userDetails.appendChild(timestamp);
-    userInfo.appendChild(avatar);
-    userInfo.appendChild(userDetails);
-  
-    // Create the post content
-    const postContent = document.createElement('p');
-    postContent.classList.add('post-content');
-    postContent.textContent = postcontent;
-  
-    // Create the post actions section
-    const postActions = document.createElement('div');
-    postActions.classList.add('post-actions');
-  
-    // Like button and notification
-    const like = document.createElement('div');
-    like.classList.add('like');
-  
-    const likeButton = document.createElement('button');
-    const likeSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    likeSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    likeSvg.setAttribute('height', '20px');
-    likeSvg.setAttribute('viewBox', '0 -960 960 960');
-    likeSvg.setAttribute('width', '20px');
-    likeSvg.setAttribute('fill', '#707C97');
-    const likePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    likePath.setAttribute('d', 'M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Zm-72-30v72H120v336h144v72H48v-480h216Z');
-    likeSvg.appendChild(likePath);
-    likeButton.appendChild(likeSvg);
-  
-    const likeNotification = document.createElement('span');
-    likeNotification.classList.add('notification-icon');
-    likeNotification.textContent = likes;
-  
-    like.appendChild(likeButton);
-    like.appendChild(likeNotification);
-  
-    // Dislike button and notification
-    const dislike = document.createElement('div');
-    dislike.classList.add('dislike');
-  
-    const dislikeButton = document.createElement('button');
-    const dislikeSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    dislikeSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    dislikeSvg.setAttribute('height', '20px');
-    dislikeSvg.setAttribute('viewBox', '0 -960 960 960');
-    dislikeSvg.setAttribute('width', '20px');
-    dislikeSvg.setAttribute('fill', '#707C97');
-    const dislikePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    dislikePath.setAttribute('d', 'M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Zm72 30v-72h144v-336H696v-72h216v480H696Z');
-    dislikeSvg.appendChild(dislikePath);
-    dislikeButton.appendChild(dislikeSvg);
-  
-    const dislikeNotification = document.createElement('span');
-    dislikeNotification.classList.add('notification-icon');
-    dislikeNotification.textContent = dislikes;
-  
-    dislike.appendChild(dislikeButton);
-    dislike.appendChild(dislikeNotification);
-  
-    // Comment button and notification
-    const comment = document.createElement('div');
-    comment.classList.add('comment');
-  
-    const commentButton = document.createElement('button');
-    const commentSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    commentSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    commentSvg.setAttribute('height', '20px');
-    commentSvg.setAttribute('viewBox', '0 -960 960 960');
-    commentSvg.setAttribute('width', '20px');
-    commentSvg.setAttribute('fill', '#707C97');
-    const commentPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    commentPath.setAttribute('d', 'M864-96 720-240H360q-29.7 0-50.85-21.15Q288-282.3 288-312v-48h384q29.7 0 50.85-21.15Q744-402.3 744-432v-240h48q29.7 0 50.85 21.15Q864-629.7 864-600v504ZM168-462l42-42h390v-288H168v330ZM96-288v-504q0-29.7 21.15-50.85Q138.3-864 168-864h432q29.7 0 50.85 21.15Q672-821.7 672-792v288q0 29.7-21.15 50.85Q629.7-432 600-432H240L96-288Zm72-216v-288 288Z');
-    commentSvg.appendChild(commentPath);
-    commentButton.appendChild(commentSvg);
-  
-    const commentNotification = document.createElement('span');
-    commentNotification.classList.add('notification-icon');
-    commentNotification.textContent = comments;
-  
-    comment.appendChild(commentButton);
-    comment.appendChild(commentNotification);
-  
-    // Show more button
-    const showMoreContainer = document.createElement('div');
-    showMoreContainer.classList.add('showmore-container');
-  
-    const showMoreLink = document.createElement('a');
-    showMoreLink.href = '#';
-    showMoreLink.classList.add('showmore');
-    showMoreLink.textContent = 'more';
-  
-    const showMoreSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    showMoreSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    showMoreSvg.setAttribute('height', '10px');
-    showMoreSvg.setAttribute('viewBox', '0 -960 960 960');
-    showMoreSvg.setAttribute('width', '10px');
-    showMoreSvg.setAttribute('fill', '#707C97');
-    const showMorePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    showMorePath.setAttribute('d', 'M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z');
-    showMoreSvg.appendChild(showMorePath);
-    showMoreLink.appendChild(showMoreSvg);
-  
-    const showMoreButton = document.createElement('button');
-    showMoreButton.classList.add('btn');
-    showMoreLink.appendChild(showMoreButton);
-  
-    showMoreContainer.appendChild(showMoreLink);
-  
-    // Append all post actions to the post-actions container
-    postActions.appendChild(like);
-    postActions.appendChild(dislike);
-    postActions.appendChild(comment);
-    postActions.appendChild(showMoreContainer);
-  
-    // Append all sections to the post
-    post.appendChild(userInfo);
-    post.appendChild(postContent);
-    post.appendChild(postActions);
-  
-    // Append the post to the body
-    document.body.appendChild(post);
-  }
+</body>
+</html>

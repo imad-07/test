@@ -11,7 +11,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
   }
-  
   .sidebar {
     width: 250px;
     height: 100vh;
@@ -77,7 +76,7 @@ body {
     }
   
 .LO{
-  margin-top: 400px;
+
 }
 .container {
   display: flex;
@@ -137,7 +136,8 @@ body {
   display: flex;
   font-size: 1.2rem;
   color: black;
-  cursor: pointer;
+  cursor: pointer5;
+  gap: 5px;
 }
 .attachments {
   display: flex;
@@ -156,13 +156,13 @@ body {
   background: #007bff;
   color: #fff;
 }
-.like, .dislike, .comment{
+.like, .dislike, .comments{
   display: flex;
   align-items: center;
   font-size: small;
   font-family: Lfontlmla7;
 }
-.like:hover svg, .dislike:hover svg, .comment:hover button svg{
+.like:hover svg, .dislike:hover svg, .comments:hover button svg{
   transform: scale(1.1);
   transition: 0.3s;
 }
@@ -176,7 +176,7 @@ body {
   transition: 0.5s;
   fill: #f30000;
 }
-.comment.active button svg{
+.comments.active button svg{
   transform: scale(1.2);
   transition: 0.5s;
 }
@@ -192,7 +192,6 @@ body {
   color: #707C97;
   font-size: 10px;
 }
-
 .card {
   width: 350px;
   height: 500px;
@@ -200,7 +199,6 @@ body {
   transform: rotateY(0deg);
   transition: transform 0.8s ease-in-out;
 }
-
 .card-side {
   width: 100%;
   height: 100%;
@@ -213,39 +211,30 @@ body {
   align-items: center;
   padding: 20px;
 }
-
 .front {
   color: #333;
 }
-
 .back {
   transform: rotateY(180deg);
   color: #333;
   overflow: scroll;
 }
- .back::-webkit-scrollbar{
-  display: none;
- }
-
 .card h2 {
   color: #2A8BF2;
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
-
 .card form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-
 .card label {
   font-size: 0.9rem;
   color: #707C97;
   margin-bottom: 5px;
 }
-
-.card input, select, button {
+.card input, select, .card button {
   font-family: 'Lfontlmla7';
   font-size: 1rem;
   margin-bottom: 15px;
@@ -254,13 +243,11 @@ body {
   border-radius: 5px;
   width: 100%;
 }
-
 .card input:focus, select:focus {
   border-color: #2A8BF2;
   outline: none;
   box-shadow: 0 0 8px #2A8BF2;
 }
-
 .card button {
   background-color: #2A8BF2;
   color: white;
@@ -268,29 +255,24 @@ body {
   border: none;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
-
 .card button:hover {
   transform: scale(1.05);
   filter: drop-shadow(0 0 10px #2A8BF2);
 }
-
 .switch {
   text-align: center;
   font-size: 0.9rem;
   color: #707C97;
 }
-
 .switch span {
   color: #2A8BF2;
   cursor: pointer;
   font-weight: bold;
   transition: color 0.3s ease;
 }
-
 .switch span:hover {
   color: #0056b3;
 } 
-
 .card.flipped {
   transform: rotateY(180deg);
 }
@@ -300,4 +282,35 @@ body {
 }
 .front,.back{
   position: absolute;
+}
+.coment-actions{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.comments-section{
+  max-height: 300px;
+  overflow: scroll;
+  margin-top: 5px;
+  border-top: #bbb6b6 solid 1px;
+}
+.coment{
+  border: 1px solid #e6e6e6;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #a9aeb8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
