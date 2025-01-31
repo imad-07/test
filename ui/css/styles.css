@@ -314,3 +314,35 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+.categories{
+  display: flex;
+  gap: 5px;
+}
+.categorie{
+  font-family: lfontlmla7;
+  font-size: smaller;
+  padding: 3px;
+  border: #a9aeb8 solid 1px;
+  border-radius: 5px;
+}
+.post-content.input{
+ resize: none;
+ overflow: scroll;
+ color: black;
+}
+.addpost{
+  font-family: lfontlmla7;
+  font-size: smaller;
+  padding: 3px;
+  border: #a9aeb8 solid 1px;
+  width: 50px;
+  border-radius: 5px;
+  align-self: flex-end;
+  cursor: pointer;
+}
+.addpost:active{
+  background-color: #a2a6ad;
+}
+.beta{
+  position: sticky;
+}

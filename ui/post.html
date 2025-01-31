@@ -8,7 +8,7 @@
 <body>
   <div class = "container">
     <div class = "posts-section">
-      <div class="post">
+      <div class="post beta">
         <div class="user-info">
           <img src="/ui/css/default-profile.jpg" alt="User Avatar" class="avatar" />
           <div class="user-details">
@@ -16,13 +16,20 @@
             <p class="timestamp">1 minute ago</p>
           </div>
         </div>
-        <p class="post-content">
-          Most of its text is made up from sections 1.10.32–3 of Cicero's *De finibus Bonorum et Malorum*.
-        </p>
-        <div class = "categories">
-          <div class="categorie football">football</div>
-          <div class="categorie cars">cars</div>
-          <div class="categorie ronaldo">ronaldo</div>
+          <textarea class="post-content input" placeholder="Enter your text here..."></textarea>
+        <div class="categories">
+          <label class="categorie">
+            <input type="checkbox" name="football" value="football"> Football
+          </label>
+          <label class="categorie">
+            <input type="checkbox" name="cars" value="cars"> Cars
+          </label>
+          <label class="categorie">
+            <input type="checkbox" name="ronaldo" value="ronaldo"> Ronaldo
+          </label>
+        </div>
+        <div class="addpost">
+          <button>addpost</button>
         </div>
     </div>
   </div>

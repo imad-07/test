@@ -386,6 +386,67 @@ function createcomment(Comment, container) {
   coment.id = Comment.id
   container.appendChild(coment)
 }
+function postin(){
+  const postDiv = document.createElement('div');
+  postDiv.classList.add('post', 'beta');
+
+  const userInfoDiv = document.createElement('div');
+  userInfoDiv.classList.add('user-info');
+  
+  const avatarImg = document.createElement('img');
+  avatarImg.src ='/ui/css/default-profile.jpg';
+  avatarImg.alt = 'User Avatar';
+  avatarImg.classList.add('avatar');
+
+  const userDetailsDiv = document.createElement('div');
+  userDetailsDiv.classList.add('user-details');
+  
+  const usernameH4 = document.createElement('h4');
+  usernameH4.classList.add('username');
+  usernameH4.textContent = "Add Your Own Post!";
+
+  userDetailsDiv.appendChild(usernameH4);
+  userInfoDiv.appendChild(avatarImg);
+  userInfoDiv.appendChild(userDetailsDiv);
+
+  const postContentTextarea = document.createElement('textarea');
+  postContentTextarea.classList.add('post-content', 'input');
+  postContentTextarea.placeholder = 'Enter your text here...';
+
+  const categoriesDiv = document.createElement('div');
+  categoriesDiv.classList.add('categories');
+
+  const categories = ['football', 'cars', 'ronaldo'];
+  categories.forEach(category => {
+    const categoryLabel = document.createElement('label');
+    categoryLabel.classList.add('categorie');
+    
+    const categoryInput = document.createElement('input');
+    categoryInput.type = 'checkbox';
+    categoryInput.name = category;
+    categoryInput.value = category;
+
+    categoryLabel.appendChild(categoryInput);
+    categoryLabel.appendChild(document.createTextNode(category.charAt(0).toUpperCase() + category.slice(1)));
+
+    categoriesDiv.appendChild(categoryLabel);
+  });
+
+  const addPostDiv = document.createElement('div');
+  addPostDiv.classList.add('addpost');
+
+  const addPostButton = document.createElement('button');
+  addPostButton.textContent = 'Post-It!';
+
+  addPostDiv.appendChild(addPostButton);
+
+  postDiv.appendChild(userInfoDiv);
+  postDiv.appendChild(postContentTextarea);
+  postDiv.appendChild(categoriesDiv);
+  postDiv.appendChild(addPostDiv);
+
+  return postDiv;
+}
 function createPost(Post) {
   // Create the main post container
   const post = document.createElement('div');
@@ -538,6 +599,14 @@ function createPost(Post) {
   if (postsection == null){
     postsection = document.createElement("div")
     postsection.classList.add("posts-section")
+    let postinput = postin()
+    let addpostbutton = postinput.querySelector(".addpost")
+    addpostbutton.addEventListener("click",async function() {
+      let content = postinput.querySelector(".input").value
+      let cats = postinput.querySelectorAll(".categorie")
+      // todo for gheda sbt
+    })
+    postsection.appendChild(postinput)
   }
   let container = document.querySelector(".container")
   // Append the post to the body
@@ -685,6 +754,16 @@ async function loadPosComments(postId,cnum) {
   }
   console.log(comments)
   return comments;
+}
+async function addpost(contentInput, categories) {
+  const res = await fetch("/api/post/", {
+    method: "post",
+    body: JSON.stringify({
+      content: contentInput,
+      categories: categories,
+    }),
+  });
+  return res
 }
 (async function(){
   if (!info.authorize){
